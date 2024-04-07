@@ -32,8 +32,11 @@ class CompileC:
     def compile_sources(self):
         if not os.path.exists(self.obj_dir):
             os.makedirs(self.obj_dir)
-        self.get_source_files()
-        for src_file, obj_file in zip(self.src_files, self.obj_files_to_make):
+
+        src_files = glob.glob(self.src_dir + '/*.c')
+        obj_files = [file.replace('.c', '.o') for file in src_files]
+
+        for src_file, obj_file in zip(src_files, obj_files):
             self.compile_source(src_file, obj_file)
 
     def link_objects(self):
@@ -43,13 +46,13 @@ class CompileC:
         command = ['gcc', '-o', self.output_executable] + obj_files_made
         self._run_command(command)
 
-
-    def get_source_files(self):
-        self.src_files = glob.glob(self.src_dir + '/*.c')
-        self.obj_files_to_make = [file.replace('.c', '.o') for file in self.src_files]
+    def run_program(self):
+        command = ['./' + self.output_executable]
+        self._run_command(command)
 
 
 if __name__ == "__main__":
     cc = CompileC()
     cc.compile_sources()
     cc.link_objects()
+    cc.run_program()
