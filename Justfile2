@@ -5,9 +5,16 @@ compile:
 		gcc -c -Iinclude $file -o obj/$(basename $file .c).o
 	done
 
-link: compile
-	#!/usr/bin/env bash
 	gcc obj/*.o -o ./bin/nand
+
+test:
+	#!/usr/bin/env bash
+	for file in test/*c;
+	do
+		gcc -c $file -o /obj/$(basename $file .c).o
+	done
+
+
 
 clean:
 	@rm -rf obj/*
