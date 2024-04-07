@@ -1,29 +1,23 @@
-CC=gcc
-CFLAGS=-Iinclude -Iunity -g -std=c17
+PATHU = unity/
+PATHS = src/
+PATHT = test/
+PATHB = build/
+PATHD = build/depends/
+PATHO = build/objs/
+PATHR = build/results/
 
-# List all header files in the include directory
-DEPS := $(wildcard include/*.h)
+BUILD_PATHS = $(PATHB) $(PATHD) $(PATHO) $(PATHR)
 
-# Define the source files
-SRC := $(wildcard src/*.c)
-TEST_SRC := $(wildcard tests/*.c)
+SRCT = $(wildcard $(PATHT)*.c)
 
-# Generate corresponding object file names
-OBJ := $(patsubst src/%.c, obj/%.o, $(SRC))
-TEST_OBJ := $(patsubst tests/%.c, obj/%.o, $(TEST_SRC))
+COMPILE=gcc -c
+LINK=gcc
+DEPEND=gcc -MM -MG -MF
+CFLAGS=-I. -I$(PATHU) -I(PATHS) -DTest
 
-# Rule to generate object files
-obj/%.o: src/%.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-# Rule to build the final executable
-nand: $(OBJ)
-	$(CC) -o bin/$@ $^ $(CFLAGS)
-
-tests: $(TEST_OBJ) $(OBJ)
-	$(CC) -o bin/tests $^ $(CFLAGS) $(LDFLAGS) $(LDLIBS)
-	./bin/tests
-
-.PHONY: clean
-clean:
-	rm -f obj/*.o bin/nand bin/tests
+test: $(BUILD_PATHS) $(RESULTS)
+	@echo "-----------------------\nIGNORES:\n-----------------------"
+	@echo `grep -s IGNORE $(PATHR)*.txt`
+	@echo "-----------------------\nFAILURES:\n-----------------------"
+	@echo `grep -s FAIL $(PATHR)*.txt`
+	@echo "\nDONE"
