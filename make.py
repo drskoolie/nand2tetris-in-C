@@ -7,8 +7,9 @@ class CompileC:
     def __init__(self):
         self.src_dir = 'src'
         self.obj_dir = 'obj'
+        self.bin_dir = 'bin'
 
-        self.exec = 'nand'
+        self.output_executable = os.path.join(self.bin_dir, 'nand')
 
         self.debug_flags = ['-g']
         self.std_flags = ['-std=c17']
@@ -29,19 +30,26 @@ class CompileC:
         self._run_command(command)
 
     def compile_sources(self):
+        if not os.path.exists(self.obj_dir):
+            os.makedirs(self.obj_dir)
         self.get_source_files()
-        for src_file, obj_file in zip(self.src_files, self.obj_files):
+        for src_file, obj_file in zip(self.src_files, self.obj_files_to_make):
             self.compile_source(src_file, obj_file)
 
     def link_objects(self):
-        pass
+        if not os.path.exists(self.bin_dir):
+            os.makedirs(self.bin_dir)
+        obj_files_made = glob.glob(self.obj_dir + '/*.o')
+        command = ['gcc', '-o', self.output_executable] + obj_files_made
+        self._run_command(command)
 
 
     def get_source_files(self):
         self.src_files = glob.glob(self.src_dir + '/*.c')
-        self.obj_files = [file.replace('.c', '.o') for file in self.src_files]
+        self.obj_files_to_make = [file.replace('.c', '.o') for file in self.src_files]
 
 
 if __name__ == "__main__":
     cc = CompileC()
     cc.compile_sources()
+    cc.link_objects()
