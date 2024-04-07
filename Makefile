@@ -26,4 +26,4 @@ tests: $(TEST_OBJ) $(OBJ)
 
 .PHONY: clean
 clean:
-	rm -f obj/*.o bin/NAND2Tetris
+	rm -f obj/*.o bin/tetris bin/tests
