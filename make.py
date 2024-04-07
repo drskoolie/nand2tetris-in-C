@@ -18,11 +18,11 @@ class CompileC:
     def compile_source_to_object(self, src_path, obj_path):
         """Compile a single source file to an object file."""
         command = ['gcc'] + self.flags +  ['-c', src_path, '-o', obj_path]
+        command = ['gcc', '---v']
         try:
-            result = subprocess.run(command, check = True)
-            print(result.stdout)
-        except subprocess.CalledProcessError as e:
-            print(e.stderr)
+            subprocess.run(command, check=True, capture_output=False, text=True)
+        except subprocess.CalledProcessError:
+            pass
 
 
 if __name__ == "__main__":
