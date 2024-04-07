@@ -20,6 +20,8 @@ CFLAGS += -Iinclude
 CFLAGS += -Iunity
 CFLAGS += -g
 
+TEST_CFLAGS := $(CFLAGS)
+
 # Target executable
 TARGET := ./bin/nand
 TEST_TARGET := ./bin/test_suite
@@ -32,14 +34,22 @@ $(TARGET): $(OBJ_FILES)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Rule to build test executable
-$(TEST_TARGET): $(TEST_OBJ_FILES) $(OBJ_FILES)
-	$(CC) $(CFLAGS) $^ -o $@
+# Excluding main.o for the test suite linkage
+OBJ_FILES_WITHOUT_MAIN := $(filter-out $(OBJ_DIR)/main.o,$(OBJ_FILES))
 
-# Rule to compile test files into object files
+# Rule for test target executable
+$(TEST_TARGET): $(TEST_OBJ_FILES) $(OBJ_FILES_WITHOUT_MAIN)
+	$(CC) $(CFLAGS) $^ unity/unity.c -o $@
+
+# Rule to compile test source files into object files
 $(OBJ_DIR)/%.o: $(TEST_DIR)/%.c
 	$(CC) $(TEST_CFLAGS) -c $< -o $@
 
+.PHONY: test
+test: $(TEST_TARGET)
+	./$<
+
 # Clean rule
+.PHONY: clean
 clean:
 	rm -f $(OBJ_DIR)/*.o $(TARGET) $(TEST_TARGET)
