@@ -2,6 +2,7 @@
 SRC_DIR := src
 OBJ_DIR := obj
 TEST_DIR := test
+BIN_TEST_DIR := ./bin/test
 
 # Files and Objects
 SRC_FILES := $(wildcard $(SRC_DIR)/*.c)
@@ -37,19 +38,26 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 # Excluding main.o for the test suite linkage
 OBJ_FILES_WITHOUT_MAIN := $(filter-out $(OBJ_DIR)/main.o,$(OBJ_FILES))
 
-# Rule for test target executable
-$(TEST_TARGET): $(TEST_OBJ_FILES) $(OBJ_FILES_WITHOUT_MAIN)
-	$(CC) $(CFLAGS) $^ unity/unity.c -o $@
+# Rule to make the test directory
+$(BIN_TEST_DIR):
+	@echo "Creating directory $(BIN_TEST_DIR)"
+	mkdir -p $@
 
-# Rule to compile test source files into object files
-$(OBJ_DIR)/%.o: $(TEST_DIR)/%.c
-	$(CC) $(TEST_CFLAGS) -c $< -o $@
+# Rule to compile each test into its own program
+$(BIN_TEST_DIR)/%: $(TEST_DIR)/%.c $(OBJ_FILES_WITHOUT_MAIN) | $(BIN_TEST_DIR)
+	$(CC) $(CFLAGS) $< $(OBJ_FILES_WITHOUT_MAIN) -o $@ -lm
 
-.PHONY: test
-test: $(TEST_TARGET)
-	./$<
+# Phony targets for standard make commands
+.PHONY: all clean test
 
-# Clean rule
-.PHONY: clean
+all: $(TEST_TARGETS)
+
 clean:
-	rm -f $(OBJ_DIR)/*.o $(TARGET) $(TEST_TARGET)
+	rm -rf $(OBJ_DIR)/*.o $(BIN_TEST_DIR)/*
+
+# Test rule to run all tests
+test: $(TEST_TARGETS)
+	@bash -c 'for test in $^ ; do \
+		echo "Running $$test..." ; \
+		./$$test ; \
+		done'
