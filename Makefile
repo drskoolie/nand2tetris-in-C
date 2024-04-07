@@ -17,7 +17,7 @@ obj/%.o: src/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 # Rule to build the final executable
-tetris: $(OBJ)
+nand: $(OBJ)
 	$(CC) -o bin/$@ $^ $(CFLAGS)
 
 tests: $(TEST_OBJ) $(OBJ)
@@ -26,4 +26,4 @@ tests: $(TEST_OBJ) $(OBJ)
 
 .PHONY: clean
 clean:
-	rm -f obj/*.o bin/tetris bin/tests
+	rm -f obj/*.o bin/nand bin/tests
