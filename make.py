@@ -1,6 +1,7 @@
 import glob
 import os
 import subprocess
+import sys
 
 class CompileC:
     def __init__(self):
@@ -90,14 +91,35 @@ class CompileC:
             command = ['./' + test_executable]
             self._run_command(command)
 
+    def clean(self):
+        print("hi")
 
-if __name__ == "__main__":
+
+def compile():
     cc = CompileC()
 
     cc.compile_sources()
     cc.link_sources()
     cc.run_executable()
 
+def test():
+    cc = CompileC()
+
     cc.compile_tests()
     cc.link_tests()
     cc.run_tests()
+
+def clean():
+    cc = CompileC()
+
+    cc.clean()
+
+sys.argv = [1, 2]
+
+if len(sys.argv) == 2:
+    argument = sys.argv[1]
+    clean()
+else:
+    print("This script requires exactly one argument")
+    sys.exit(1)
+
