@@ -83,11 +83,21 @@ class CompileC:
         command = ['./' + self.output_executable]
         self._run_command(command)
 
+    def run_tests(self):
+        test_executables = os.listdir(self.test_bin_dir)
+        test_executables = [os.path.join(self.test_bin_dir, test_executable) for test_executable in test_executables]
+        for test_executable in test_executables:
+            command = ['./' + test_executable]
+            self._run_command(command)
+
 
 if __name__ == "__main__":
     cc = CompileC()
+
     cc.compile_sources()
     cc.link_sources()
     cc.run_executable()
+
     cc.compile_tests()
     cc.link_tests()
+    cc.run_tests()
