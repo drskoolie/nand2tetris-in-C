@@ -1,8 +1,11 @@
 #include "unity.h"
-#include "../include/gates.h"
+
+void setUp(void) {}
+
+void tearDown(void) {}
 
 void test_nand_gate(void) {
-	TEST_ASSERT_EQUAL(1, nand_gate(0, 0));
+	TEST_ASSERT_EQUAL_INT(1, 2);
 }
 
 int main(void) {

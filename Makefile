@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Iinclude -g -std=c17
+CFLAGS=-Iinclude -Iunity -g -std=c17
 
 # List all header files in the include directory
 DEPS := $(wildcard include/*.h)
