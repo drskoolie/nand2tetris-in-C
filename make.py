@@ -35,15 +35,19 @@ class CompileC:
         if not os.path.exists(self.obj_dir):
             os.makedirs(self.obj_dir)
 
-        src_files = glob.glob(self.src_dir + '/*.c')
+        src_files = os.listdir(self.src_dir)
         obj_files = [file.replace('.c', '.o') for file in src_files]
 
         for src_file, obj_file in zip(src_files, obj_files):
-            self.compile_file(src_file, obj_file)
+            self.compile_file(os.path.join(self.src_dir, src_file),
+                              os.path.join(self.obj_dir, obj_file))
 
     def compile_tests(self):
         if not os.path.exists(self.obj_test_dir):
             os.makedirs(self.obj_test_dir)
+
+        test_files = glob.glob(self.test_dir + '/*.c')
+        print(test_files)
 
     def link_objects(self):
         if not os.path.exists(self.bin_dir):
