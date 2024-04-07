@@ -8,8 +8,10 @@ class CompileC:
         self.src_dir = 'src'
         self.obj_dir = 'obj'
         self.bin_dir = 'bin'
-        self.test_dir = 'test'
-        self.test_obj_dir = os.path.join('obj', 'tests')
+
+        self.test_dir = 'tests'
+        self.test_obj_dir = os.path.join(self.obj_dir, 'tests')
+        self.test_bin_dir = os.path.join(self.bin_dir, 'tests')
 
         self.output_executable = os.path.join(self.bin_dir, 'nand')
 
@@ -62,9 +64,10 @@ class CompileC:
         self._run_command(command)
 
     def link_tests(self):
-        pass
+        if not os.path.exists(self.test_bin_dir):
+            os.makedirs(self.test_bin_dir)
 
-    def run_program(self):
+    def run_executable(self):
         command = ['./' + self.output_executable]
         self._run_command(command)
 
@@ -73,5 +76,5 @@ if __name__ == "__main__":
     cc = CompileC()
     cc.compile_sources()
     cc.link_sources()
-    cc.run_program()
+    cc.run_executable()
     cc.compile_tests()
