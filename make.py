@@ -9,7 +9,7 @@ class CompileC:
         self.obj_dir = 'obj'
         self.bin_dir = 'bin'
         self.test_dir = 'test'
-        self.obj_test_dir = os.path.join('bin', 'tests')
+        self.test_obj_dir = os.path.join('obj', 'tests')
 
         self.output_executable = os.path.join(self.bin_dir, 'nand')
 
@@ -35,27 +35,34 @@ class CompileC:
         if not os.path.exists(self.obj_dir):
             os.makedirs(self.obj_dir)
 
-        src_files = os.listdir(self.src_dir)
-        obj_files = [file.replace('.c', '.o') for file in src_files]
+        src_paths = os.listdir(self.src_dir)
+        obj_paths = [path.replace('.c', '.o') for path in src_paths]
 
-        for src_file, obj_file in zip(src_files, obj_files):
-            self.compile_file(os.path.join(self.src_dir, src_file),
-                              os.path.join(self.obj_dir, obj_file))
+        for src_path, obj_path in zip(src_paths, obj_paths):
+            self.compile_file(os.path.join(self.src_dir, src_path),
+                              os.path.join(self.obj_dir, obj_path))
 
     def compile_tests(self):
-        if not os.path.exists(self.obj_test_dir):
-            os.makedirs(self.obj_test_dir)
+        if not os.path.exists(self.test_obj_dir):
+            os.makedirs(self.test_obj_dir)
 
-        test_files = glob.glob(self.test_dir + '/*.c')
-        print(test_files)
+        test_paths = os.listdir(self.test_dir)
+        test_obj_paths = [path.replace('.c', '.o') for path in test_paths]
 
-    def link_objects(self):
+        for test_path, test_obj_path in zip(test_paths, test_obj_paths):
+            self.compile_file(os.path.join(self.test_dir, test_path),
+                              os.path.join(self.test_obj_dir, test_obj_path))
+
+    def link_sources(self):
         if not os.path.exists(self.bin_dir):
             os.makedirs(self.bin_dir)
 
         obj_files = glob.glob(self.obj_dir + '/*.o')
         command = ['gcc', '-o', self.output_executable] + obj_files
         self._run_command(command)
+
+    def link_tests(self):
+        pass
 
     def run_program(self):
         command = ['./' + self.output_executable]
@@ -65,7 +72,6 @@ class CompileC:
 if __name__ == "__main__":
     cc = CompileC()
     cc.compile_sources()
-    cc.link_objects()
+    cc.link_sources()
     cc.run_program()
     cc.compile_tests()
-    
