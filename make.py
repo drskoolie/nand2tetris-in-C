@@ -1,7 +1,6 @@
 import glob
 import os
 import subprocess
-from pathlib import Path
 
 class CompileC:
     def __init__(self):
@@ -67,6 +66,19 @@ class CompileC:
         if not os.path.exists(self.test_bin_dir):
             os.makedirs(self.test_bin_dir)
 
+        obj_files = glob.glob(self.obj_dir + '/*.o')
+        if 'obj/main.o' in obj_files:
+            obj_files.remove('obj/main.o')
+
+        obj_test_files = glob.glob(self.test_obj_dir + '/*.o')
+
+        for obj_test_file in obj_test_files:
+            executable = obj_test_file.split('/')[-1].split('.o')[0]
+            executable = os.path.join(self.test_bin_dir, executable)
+            command = ['gcc'] + self.flags + ['-o', executable] + [obj_test_file] + obj_files + ['unity/unity.c']
+            self._run_command(command)
+
+
     def run_executable(self):
         command = ['./' + self.output_executable]
         self._run_command(command)
@@ -78,3 +90,4 @@ if __name__ == "__main__":
     cc.link_sources()
     cc.run_executable()
     cc.compile_tests()
+    cc.link_tests()
