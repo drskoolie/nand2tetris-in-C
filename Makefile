@@ -1,32 +1,45 @@
-# Define source directory
+# Define directories
 SRC_DIR := src
-
-# Define object directory
 OBJ_DIR := obj
+TEST_DIR := test
 
-# Define source files using wildcard function
+# Files and Objects
 SRC_FILES := $(wildcard $(SRC_DIR)/*.c)
-
-# Define object files using patsubst function
 OBJ_FILES := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
+TEST_FILES := $(wildcard $(TEST_DIR)/*.c)
+TEST_OBJ_FILES := $(patsubst $(TEST_DIR)/%.c,$(OBJ_DIR)/%.o,$(TEST_FILES))
 
 # Compiler
 CC := gcc
 
 # Compiler flags
-CFLAGS := -Wall -Wextra -Iinclude
+CFLAGS := 
+CFLAGS += -Wall 
+CFLAGS += -Wextra 
+CFLAGS += -Iinclude
+CFLAGS += -Iunity
+CFLAGS += -g
 
 # Target executable
-TARGET := my_program
+TARGET := ./bin/nand
+TEST_TARGET := ./bin/test_suite
 
 # Default rule to build the executable
 $(TARGET): $(OBJ_FILES)
-	$(CC) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@
 
 # Rule to compile source files into object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+# Rule to build test executable
+$(TEST_TARGET): $(TEST_OBJ_FILES) $(OBJ_FILES)
+	$(CC) $(CFLAGS) $^ -o $@
+
+# Rule to compile test files into object files
+$(OBJ_DIR)/%.o: $(TEST_DIR)/%.c
+	$(CC) $(TEST_CFLAGS) -c $< -o $@
+
 # Clean rule
 clean:
-	rm -f $(OBJ_DIR)/*.o $(TARGET)
+	rm -f $(OBJ_DIR)/*.o $(TARGET) $(TEST_TARGET)
