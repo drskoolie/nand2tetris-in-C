@@ -34,3 +34,12 @@ int mux_gate(int a, int b, int sel)
 {
 	return ((a && !sel) || (b && sel));
 }
+
+// Hacky way of getting two return values
+// a = output[0] 
+// b = output[1]
+void demux_gate(int in, int sel, int outputs[2])
+{
+	outputs[0] = 0;
+	outputs[1] = 0;
+}

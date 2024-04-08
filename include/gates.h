@@ -10,5 +10,6 @@ int not_gate(int a);
 int xor_gate(int a, int b);
 int nor_gate(int a, int b);
 int mux_gate(int a, int b, int sel);
+void demux_gate(int in, int sel, int outputs[2]);
 
 #endif
