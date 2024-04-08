@@ -26,3 +26,8 @@ bool xor_gate(bool a, bool b)
 {
 	return ((a && !b) || (!a && b));
 }
+
+bool nor_gate(bool a, bool b)
+{
+	return !(a || b);
+}
