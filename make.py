@@ -129,11 +129,18 @@ def clean():
 
     cc.clean()
 
-sys.argv = [1, 2]
-
 if len(sys.argv) == 2:
     argument = sys.argv[1]
-    clean()
+
+    if argument == "compile":
+        compile()
+    elif argument == "clean":
+        clean()
+    elif argument == "test":
+        test()
+    else:
+        print("Argument {argument} is not accepted")
+        sys.exit(1)
 else:
     print("This script requires exactly one argument")
     sys.exit(1)
