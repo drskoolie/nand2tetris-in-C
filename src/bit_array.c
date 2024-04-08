@@ -3,7 +3,13 @@
 
 void printBitArray(BitArray* bit_array)
 {
-	printf("Bits: ");
+	printf("Index: ");
+	for (int i = 0; i < bit_array->no_of_bits; i++) {
+		printf("%d ", i);
+	}
+	printf("\n");
+
+	printf("Value: ");
 	for (int i = 0; i < bit_array->no_of_bits; i++) {
 		printf("%d ", bit_array->bits[i]);
 	}
