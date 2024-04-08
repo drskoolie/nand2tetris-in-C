@@ -125,7 +125,6 @@ def compile():
 
     cc.compile_sources()
     cc.link_sources()
-    cc.run_executable()
 
 def test():
     cc = CompileC()
@@ -149,7 +148,6 @@ def warning():
 
     cc.compile_sources()
     cc.link_sources()
-    cc.run_executable()
 
 if len(sys.argv) == 2:
     argument = sys.argv[1]
