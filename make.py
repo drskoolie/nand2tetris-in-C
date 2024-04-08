@@ -98,16 +98,20 @@ class CompileC:
 
             if os.path.isfile(file_path) or os.path.islink(file_path):
                 os.remove(file_path)
+                print("Deleted: {file_path}\n")
             elif os.path.isdir(file_path):
                 shutil.rmtree(file_path)
+                print("Deleted: {file_path}\n")
 
         for file_name in os.listdir(self.obj_dir):
             file_path = os.path.join(self.obj_dir, file_name)
 
             if os.path.isfile(file_path) or os.path.islink(file_path):
                 os.remove(file_path)
+                print("Deleted: {file_path}\n")
             elif os.path.isdir(file_path):
                 shutil.rmtree(file_path)
+                print("Deleted: {file_path}\n")
 
 
 def compile():
@@ -129,6 +133,11 @@ def clean():
 
     cc.clean()
 
+def run():
+    cc = CompileC()
+
+    cc.run_executable()
+
 if len(sys.argv) == 2:
     argument = sys.argv[1]
 
@@ -138,6 +147,8 @@ if len(sys.argv) == 2:
         clean()
     elif argument == "test":
         test()
+    elif argument == "run":
+        run()
     else:
         print("Argument {argument} is not accepted")
         sys.exit(1)
