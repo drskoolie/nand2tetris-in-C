@@ -42,4 +42,10 @@ void demux_gate(int in, int sel, int outputs[2])
 {
 	outputs[0] = 0;
 	outputs[1] = 0;
+
+	if (sel == 0) {
+		outputs[0] = in;
+	} else {
+		outputs[1] = in;
+	}
 }
