@@ -136,6 +136,45 @@ void test_or_n_1(void)
 	}
 }
 
+void test_not_n_0(void)
+{
+	int no_of_bits = 4;
+	int input_bits[] = {0, 0, 1, 1};
+	int output_bits[4] = {0};
+
+	int correct_bits[] = {0, 1, 1, 1};
+
+	BitArray input = {input0_bits, no_of_bits};
+	BitArray output = {output_bits, no_of_bits};
+	BitArray correct = {correct_bits, no_of_bits};
+
+	not_n(input, &output);
+
+	for (int i = 0; i < no_of_bits; i++) {
+		TEST_ASSERT_EQUAL_INT(correct.bits[i], output_bits[i]);
+	}
+}
+
+
+void test_not_n_1(void)
+{
+	int no_of_bits = 6;
+	int input_bits[] = {0, 0, 1, 1, 0, 0};
+	int output_bits[6] = {0};
+
+	int correct_bits[] = {0, 1, 1, 1, 1, 0};
+
+	BitArray input = {input0_bits, no_of_bits};
+	BitArray output = {output_bits, no_of_bits};
+	BitArray correct = {correct_bits, no_of_bits};
+
+	not_n(input, &output);
+
+	for (int i = 0; i < no_of_bits; i++) {
+		TEST_ASSERT_EQUAL_INT(correct.bits[i], output_bits[i]);
+	}
+}
+
 
 int main(void) {
 	UNITY_BEGIN();
@@ -146,6 +185,8 @@ int main(void) {
 	RUN_TEST(test_and_n_1);
 	RUN_TEST(test_or_n_0);
 	RUN_TEST(test_or_n_1);
+	RUN_TEST(test_not_n_0);
+	RUN_TEST(test_not_n_1);
 
 	return UNITY_END();
 }
