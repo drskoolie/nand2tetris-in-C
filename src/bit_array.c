@@ -18,5 +18,11 @@ void printBitArray(BitArray* bit_array)
 
 int BitArray_to_int(BitArray* bit_array)
 {
-	return 1;
+	int number = 0;
+
+	for (int i = 0; i < bit_array->no_of_bits; i++) {
+		number = (number << 1) | bit_array->bits[i];
+	}
+
+	return number;
 }
