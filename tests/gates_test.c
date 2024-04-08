@@ -11,8 +11,6 @@ void test_nand_n()
 	TEST_ASSERT_EQUAL_INT(1, 1);
 }
 
-
-
 int main(void) {
 	UNITY_BEGIN();
 
