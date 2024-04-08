@@ -5,7 +5,9 @@ import subprocess
 import sys
 
 class CompileC:
-    def __init__(self):
+    def __init__(self, warning = False):
+        self.warning = warning
+
         self.src_dir = 'src'
         self.obj_dir = 'obj'
         self.bin_dir = 'bin'
@@ -21,7 +23,11 @@ class CompileC:
         self.include_flags = ['-Iinclude', '-Iunity']
         self.warnings_flags = ['-Wall', '-Wextra']
 
-        self.flags = self.debug_flags + self.std_flags + self.include_flags + self.warnings_flags
+        if self.warning:
+            self.flags = self.debug_flags + self.std_flags + self.include_flags + self.warnings_flags
+        else:
+            self.flags = self.debug_flags + self.std_flags + self.include_flags
+
 
     def _run_command(self, command):
         try:
@@ -138,6 +144,13 @@ def run():
 
     cc.run_executable()
 
+def warning():
+    cc = CompileC(warning = True)
+
+    cc.compile_sources()
+    cc.link_sources()
+    cc.run_executable()
+
 if len(sys.argv) == 2:
     argument = sys.argv[1]
 
@@ -149,6 +162,8 @@ if len(sys.argv) == 2:
         test()
     elif argument == "run":
         run()
+    elif argument == "warning":
+        warning()
     else:
         print("Argument {argument} is not accepted")
         sys.exit(1)

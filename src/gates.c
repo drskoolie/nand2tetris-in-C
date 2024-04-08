@@ -14,5 +14,5 @@ bool and_gate(bool a, bool b)
 
 bool or_gate(bool a, bool b)
 {
-	return true;
+	return (a || b);
 }

@@ -34,6 +34,7 @@ int main(void) {
 
 	RUN_TEST(test_nand_gate);
 	RUN_TEST(test_and_gate);
+	RUN_TEST(test_or_gate);
 
 	return UNITY_END();
 }
