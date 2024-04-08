@@ -30,7 +30,7 @@ int nor_gate(int a, int b)
 	return !(a || b);
 }
 
-int mux(int a, int b, int sel)
+int mux_gate(int a, int b, int sel)
 {
 	return ((a && !sel) || (b && sel));
 }
