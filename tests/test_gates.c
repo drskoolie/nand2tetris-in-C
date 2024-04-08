@@ -1,5 +1,4 @@
 #include "unity.h"
-
 #include "bit_array.h"
 #include "gates.h"
 
