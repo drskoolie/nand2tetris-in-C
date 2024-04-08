@@ -142,9 +142,9 @@ void test_not_n_0(void)
 	int input_bits[] = {0, 0, 1, 1};
 	int output_bits[4] = {0};
 
-	int correct_bits[] = {0, 1, 1, 1};
+	int correct_bits[] = {1, 1, 0, 0};
 
-	BitArray input = {input0_bits, no_of_bits};
+	BitArray input = {input_bits, no_of_bits};
 	BitArray output = {output_bits, no_of_bits};
 	BitArray correct = {correct_bits, no_of_bits};
 
@@ -162,9 +162,9 @@ void test_not_n_1(void)
 	int input_bits[] = {0, 0, 1, 1, 0, 0};
 	int output_bits[6] = {0};
 
-	int correct_bits[] = {0, 1, 1, 1, 1, 0};
+	int correct_bits[] = {1, 1, 0, 0, 1, 1};
 
-	BitArray input = {input0_bits, no_of_bits};
+	BitArray input = {input_bits, no_of_bits};
 	BitArray output = {output_bits, no_of_bits};
 	BitArray correct = {correct_bits, no_of_bits};
 
