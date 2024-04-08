@@ -24,25 +24,25 @@ void test_and_gate(void) {
 
 void test_or_gate(void) {
 	TEST_ASSERT_EQUAL_INT(0, or_gate(0, 0));
-	TEST_ASSERT_EQUAL_INT(0, or_gate(0, 1));
-	TEST_ASSERT_EQUAL_INT(0, or_gate(1, 0));
-	TEST_ASSERT_EQUAL_INT(0, or_gate(1, 1));
+	TEST_ASSERT_EQUAL_INT(1, or_gate(0, 1));
+	TEST_ASSERT_EQUAL_INT(1, or_gate(1, 0));
+	TEST_ASSERT_EQUAL_INT(1, or_gate(1, 1));
 }
 
 void test_not_gate(void) {
-	TEST_ASSERT_EQUAL_INT(0, not_gate(0));
+	TEST_ASSERT_EQUAL_INT(1, not_gate(0));
 	TEST_ASSERT_EQUAL_INT(0, not_gate(1));
 }
 
 void test_xor_gate(void) {
 	TEST_ASSERT_EQUAL_INT(0, xor_gate(0, 0));
-	TEST_ASSERT_EQUAL_INT(0, xor_gate(0, 1));
-	TEST_ASSERT_EQUAL_INT(0, xor_gate(1, 0));
+	TEST_ASSERT_EQUAL_INT(1, xor_gate(0, 1));
+	TEST_ASSERT_EQUAL_INT(1, xor_gate(1, 0));
 	TEST_ASSERT_EQUAL_INT(0, xor_gate(1, 1));
 }
 
 void test_nor_gate(void) {
-	TEST_ASSERT_EQUAL_INT(0, nor_gate(0, 0));
+	TEST_ASSERT_EQUAL_INT(1, nor_gate(0, 0));
 	TEST_ASSERT_EQUAL_INT(0, nor_gate(0, 1));
 	TEST_ASSERT_EQUAL_INT(0, nor_gate(1, 0));
 	TEST_ASSERT_EQUAL_INT(0, nor_gate(1, 1));
