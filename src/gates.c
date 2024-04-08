@@ -1,33 +1,31 @@
-#include <stdbool.h>
-
 #include "gates.h"
 
-bool nand_gate(bool a, bool b) 
+int nand_gate(int a, int b) 
 {
 	return !(a && b);
 }
 
-bool and_gate(bool a, bool b)
+int and_gate(int a, int b)
 {
 	return (a && b);
 }
 
-bool or_gate(bool a, bool b)
+int or_gate(int a, int b)
 {
 	return (a || b);
 }
 
-bool not_gate(bool a)
+int not_gate(int a)
 {
 	return !a;
 }
 
-bool xor_gate(bool a, bool b)
+int xor_gate(int a, int b)
 {
 	return ((a && !b) || (!a && b));
 }
 
-bool nor_gate(bool a, bool b)
+int nor_gate(int a, int b)
 {
 	return !(a || b);
 }

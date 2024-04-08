@@ -3,11 +3,11 @@
 
 #include <stdbool.h>
 
-bool nand_gate(bool a, bool b);
-bool and_gate(bool a, bool b);
-bool or_gate(bool a, bool b);
-bool not_gate(bool a);
-bool xor_gate(bool a, bool b);
-bool nor_gate(bool a, bool b);
+int nand_gate(int a, int b);
+int and_gate(int a, int b);
+int or_gate(int a, int b);
+int not_gate(int a);
+int xor_gate(int a, int b);
+int nor_gate(int a, int b);
 
 #endif

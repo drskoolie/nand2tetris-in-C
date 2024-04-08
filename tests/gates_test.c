@@ -9,43 +9,43 @@ void setUp(void) {}
 void tearDown(void) {}
 
 void test_nand_gate(void) {
-	TEST_ASSERT_TRUE(nand_gate(false, false));
-	TEST_ASSERT_TRUE(nand_gate(false, true));
-	TEST_ASSERT_TRUE(nand_gate(true, false));
-	TEST_ASSERT_FALSE(nand_gate(true, true));
+	TEST_ASSERT_EQUAL_INT(1, nand_gate(0, 0));
+	TEST_ASSERT_EQUAL_INT(1, nand_gate(0, 1));
+	TEST_ASSERT_EQUAL_INT(1, nand_gate(1, 0));
+	TEST_ASSERT_EQUAL_INT(0, nand_gate(1, 1));
 }
 
 void test_and_gate(void) {
-	TEST_ASSERT_FALSE(and_gate(false, false));
-	TEST_ASSERT_FALSE(and_gate(false, true));
-	TEST_ASSERT_FALSE(and_gate(true, false));
-	TEST_ASSERT_TRUE(and_gate(true, true));
+	TEST_ASSERT_EQUAL_INT(0, and_gate(0, 0));
+	TEST_ASSERT_EQUAL_INT(0, and_gate(0, 1));
+	TEST_ASSERT_EQUAL_INT(0, and_gate(1, 0));
+	TEST_ASSERT_EQUAL_INT(1, and_gate(1, 1));
 }
 
 void test_or_gate(void) {
-	TEST_ASSERT_FALSE(or_gate(false, false));
-	TEST_ASSERT_TRUE(or_gate(false, true));
-	TEST_ASSERT_TRUE(or_gate(true, false));
-	TEST_ASSERT_TRUE(or_gate(true, true));
+	TEST_ASSERT_EQUAL_INT(0, or_gate(0, 0));
+	TEST_ASSERT_EQUAL_INT(0, or_gate(0, 1));
+	TEST_ASSERT_EQUAL_INT(0, or_gate(1, 0));
+	TEST_ASSERT_EQUAL_INT(0, or_gate(1, 1));
 }
 
 void test_not_gate(void) {
-	TEST_ASSERT_TRUE(not_gate(false));
-	TEST_ASSERT_FALSE(not_gate(true));
+	TEST_ASSERT_EQUAL_INT(0, not_gate(0));
+	TEST_ASSERT_EQUAL_INT(0, not_gate(1));
 }
 
 void test_xor_gate(void) {
-	TEST_ASSERT_FALSE(xor_gate(false, false));
-	TEST_ASSERT_TRUE(xor_gate(true, false));
-	TEST_ASSERT_TRUE(xor_gate(false, true));
-	TEST_ASSERT_FALSE(xor_gate(true, true));
+	TEST_ASSERT_EQUAL_INT(0, xor_gate(0, 0));
+	TEST_ASSERT_EQUAL_INT(0, xor_gate(0, 1));
+	TEST_ASSERT_EQUAL_INT(0, xor_gate(1, 0));
+	TEST_ASSERT_EQUAL_INT(0, xor_gate(1, 1));
 }
 
 void test_nor_gate(void) {
-	TEST_ASSERT_TRUE(nor_gate(false, false));
-	TEST_ASSERT_FALSE(nor_gate(true, false));
-	TEST_ASSERT_FALSE(nor_gate(false, true));
-	TEST_ASSERT_FALSE(nor_gate(true, true));
+	TEST_ASSERT_EQUAL_INT(0, nor_gate(0, 0));
+	TEST_ASSERT_EQUAL_INT(0, nor_gate(0, 1));
+	TEST_ASSERT_EQUAL_INT(0, nor_gate(1, 0));
+	TEST_ASSERT_EQUAL_INT(0, nor_gate(1, 1));
 }
 
 int main(void) {
