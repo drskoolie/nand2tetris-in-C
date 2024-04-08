@@ -8,7 +8,10 @@ void setUp(void) {}
 void tearDown(void) {}
 
 void test_nand_gate(void) {
-	TEST_ASSERT_TRUE(nand_gate(false, false));
+	TEST_ASSERT_FALSE(nand_gate(false, false));
+	TEST_ASSERT_TRUE(nand_gate(false, true));
+	TEST_ASSERT_TRUE(nand_gate(true, false));
+	TEST_ASSERT_TRUE(nand_gate(true, true));
 }
 
 int main(void) {
