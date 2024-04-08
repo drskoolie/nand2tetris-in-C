@@ -1,5 +1,6 @@
 import glob
 import os
+import shutil
 import subprocess
 import sys
 
@@ -92,7 +93,21 @@ class CompileC:
             self._run_command(command)
 
     def clean(self):
-        print("hi")
+        for file_name in os.listdir(self.bin_dir):
+            file_path = os.path.join(self.bin_dir, file_name)
+
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.remove(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+
+        for file_name in os.listdir(self.obj_dir):
+            file_path = os.path.join(self.obj_dir, file_name)
+
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.remove(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
 
 
 def compile():
