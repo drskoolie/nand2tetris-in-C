@@ -1,11 +1,17 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "gates.h"
 #include "bit_array.h"
+
+void raise_error(const char *message) {
+	fprintf(stderr, "Error: %s\n", message);
+}
 
 void nand_n(BitArray input0, BitArray input1, BitArray *output)
 {
 	if (! ((input0.no_of_bits == input1.no_of_bits) && (input1.no_of_bits == output->no_of_bits)) ) {
-		printf("nand_n()'s no_of_bits is not equal between inputs\n");
+		printf("Hi");
+		raise_error("nand_n()'s no_of_bits is not equal between inputs\n");
 	}
 
 	for (int i = 0; i < input0.no_of_bits; i++) {
