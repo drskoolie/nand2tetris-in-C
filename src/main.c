@@ -9,9 +9,9 @@ int main()
 	int no_of_bits = 8;
 	int bits[8] = {0};
 
-	BitArray input1 = initializeBitArray(bits, no_of_bits);
+	BitArray input1 = {bits, no_of_bits};
 
-	input1.print(&input1);
+	printBitArray(&input1);
 
 	return 0;
 }

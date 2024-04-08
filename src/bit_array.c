@@ -15,12 +15,3 @@ void printBitArray(BitArray* bit_array)
 	}
 	printf("\n");
 }
-
-BitArray initializeBitArray(int* bits, int no_of_bits)
-{
-	BitArray bit_array;
-	bit_array.bits = bits;
-	bit_array.no_of_bits = no_of_bits;
-	bit_array.print = printBitArray;
-	return bit_array;
-}
