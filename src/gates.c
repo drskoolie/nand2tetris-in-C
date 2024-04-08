@@ -8,8 +8,7 @@ void nand_n(BitArray input0, BitArray input1, BitArray *output)
 		printf("nand_n()'s no_of_bits is not equal between inputs\n");
 	}
 
-	output->bits[0] = 1;
-	output->bits[1] = 1;
-	output->bits[2] = 1;
-	output->bits[3] = 0;
+	for (int i = 0; i < input0.no_of_bits; i++) {
+		output->bits[i] = !(input0.bits[i] && input1.bits[i]);
+	}
 }
