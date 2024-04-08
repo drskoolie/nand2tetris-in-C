@@ -9,5 +9,6 @@ int or_gate(int a, int b);
 int not_gate(int a);
 int xor_gate(int a, int b);
 int nor_gate(int a, int b);
+int mux_gate(int a, int b, int sel);
 
 #endif

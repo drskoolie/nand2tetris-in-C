@@ -48,6 +48,17 @@ void test_nor_gate(void) {
 	TEST_ASSERT_EQUAL_INT(0, nor_gate(1, 1));
 }
 
+void test_mux(void) {
+	TEST_ASSERT_EQUAL_INT(0, mux(0, 0, 0));
+	TEST_ASSERT_EQUAL_INT(0, mux(0, 0, 1));
+	TEST_ASSERT_EQUAL_INT(0, mux(0, 1, 0));
+	TEST_ASSERT_EQUAL_INT(1, mux(0, 1, 1));
+	TEST_ASSERT_EQUAL_INT(1, mux(1, 0, 0));
+	TEST_ASSERT_EQUAL_INT(0, mux(1, 0, 1));
+	TEST_ASSERT_EQUAL_INT(1, mux(1, 1, 0));
+	TEST_ASSERT_EQUAL_INT(1, mux(1, 1, 1));
+}
+
 int main(void) {
 	UNITY_BEGIN();
 
@@ -57,6 +68,7 @@ int main(void) {
 	RUN_TEST(test_not_gate);
 	RUN_TEST(test_xor_gate);
 	RUN_TEST(test_nor_gate);
+	RUN_TEST(test_mux);
 
 	return UNITY_END();
 }
