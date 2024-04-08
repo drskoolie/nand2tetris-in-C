@@ -1,6 +1,13 @@
 #ifndef GATES_H
 #define GATES_H
 
-void nand_chip_n(int *a, int *b, int no_of_bits, int *out);
+int nand_gate(int a, int b);
+int and_gate(int a, int b);
+int or_gate(int a, int b);
+int not_gate(int a);
+int xor_gate(int a, int b);
+int nor_gate(int a, int b);
+int mux_gate(int a, int b, int sel);
+void demux_gate(int in, int sel, int outputs[2]);
 
 #endif
