@@ -21,3 +21,8 @@ bool not_gate(bool a)
 {
 	return !a;
 }
+
+bool xor_gate(bool a, bool b)
+{
+	return ((a && !b) || (!a && b));
+}
