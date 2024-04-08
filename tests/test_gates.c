@@ -184,7 +184,7 @@ void test_xor_n_0(void)
 	int input1_bits[] = {0, 1, 0, 1};
 	int output_bits[4] = {0};
 
-	int correct_bits[] = {1, 1, 1, 0};
+	int correct_bits[] = {0, 1, 1, 0};
 
 	BitArray input0 = {input0_bits, no_of_bits};
 	BitArray input1 = {input1_bits, no_of_bits};
@@ -206,7 +206,7 @@ void test_xor_n_1(void)
 	int input1_bits[] = {0, 1, 0, 1, 1, 0};
 	int output_bits[6] = {0};
 
-	int correct_bits[] = {1, 1, 1, 0, 1, 1};
+	int correct_bits[] = {0, 1, 1, 0, 1, 0};
 
 	BitArray input0 = {input0_bits, no_of_bits};
 	BitArray input1 = {input1_bits, no_of_bits};
