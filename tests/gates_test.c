@@ -23,10 +23,10 @@ void test_and_gate(void) {
 }
 
 void test_or_gate(void) {
-	TEST_ASSERT_FALSE(and_gate(false, false));
-	TEST_ASSERT_TRUE(and_gate(false, true));
-	TEST_ASSERT_TRUE(and_gate(true, false));
-	TEST_ASSERT_TRUE(and_gate(true, true));
+	TEST_ASSERT_FALSE(or_gate(false, false));
+	TEST_ASSERT_TRUE(or_gate(false, true));
+	TEST_ASSERT_TRUE(or_gate(true, false));
+	TEST_ASSERT_TRUE(or_gate(true, true));
 }
 
 int main(void) {
