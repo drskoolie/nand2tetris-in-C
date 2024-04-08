@@ -223,14 +223,16 @@ void test_xor_n_1(void)
 int main(void) {
 	UNITY_BEGIN();
 	
-	RUN_TEST(test_nand_n_0);
-	RUN_TEST(test_nand_n_1);
 	RUN_TEST(test_and_n_0);
 	RUN_TEST(test_and_n_1);
 	RUN_TEST(test_or_n_0);
 	RUN_TEST(test_or_n_1);
 	RUN_TEST(test_not_n_0);
 	RUN_TEST(test_not_n_1);
+	RUN_TEST(test_nand_n_0);
+	RUN_TEST(test_nand_n_1);
+	RUN_TEST(test_xor_n_0);
+	RUN_TEST(test_xor_n_1);
 
 	return UNITY_END();
 }
