@@ -16,3 +16,8 @@ bool or_gate(bool a, bool b)
 {
 	return (a || b);
 }
+
+bool not_gate(bool a)
+{
+	return !a;
+}

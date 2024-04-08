@@ -29,12 +29,18 @@ void test_or_gate(void) {
 	TEST_ASSERT_TRUE(or_gate(true, true));
 }
 
+void test_not_gate(void) {
+	TEST_ASSERT_TRUE(not_gate(false));
+	TEST_ASSERT_FALSE(not_gate(true));
+}
+
 int main(void) {
 	UNITY_BEGIN();
 
 	RUN_TEST(test_nand_gate);
 	RUN_TEST(test_and_gate);
 	RUN_TEST(test_or_gate);
+	RUN_TEST(test_not_gate);
 
 	return UNITY_END();
 }
