@@ -4,5 +4,6 @@
 #include <stdbool.h>
 
 bool nand_gate(bool a, bool b);
+bool and_gate(bool a, bool b);
 
 #endif

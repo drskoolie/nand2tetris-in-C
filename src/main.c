@@ -4,7 +4,7 @@
 
 int main()
 {
-	printf("%d\n", nand_gate(1, 0));
+	printf("Run\n");
 
 	return 0;
 }
