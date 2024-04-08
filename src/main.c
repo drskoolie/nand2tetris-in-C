@@ -4,10 +4,7 @@
 
 int main()
 {
-	printf("%d\n", nand_gate(0,0));
-	printf("%d\n", nand_gate(0,1));
-	printf("%d\n", nand_gate(1,0));
-	printf("%d\n", nand_gate(1,1));
+	printf("I ran\n");
 
 	return 0;
 }
