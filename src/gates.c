@@ -11,3 +11,8 @@ bool and_gate(bool a, bool b)
 {
 	return (a && b);
 }
+
+bool or_gate(bool a, bool b)
+{
+	return true;
+}
