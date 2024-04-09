@@ -6,7 +6,8 @@ typedef struct {
 	int no_of_bits;
 } BitArray;
 
-void printBitArray(BitArray* bit_array);
+void print_BitArray(BitArray* bit_array);
 int BitArray_to_int(BitArray* bit_array);
+void int_to_BitArray(int input, BitArray *output);
 
 #endif

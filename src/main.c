@@ -11,7 +11,7 @@ int main()
 
 	BitArray input1 = {bits, no_of_bits};
 
-	printBitArray(&input1);
+	print_BitArray(&input1);
 
 	return 0;
 }
