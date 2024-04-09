@@ -16,7 +16,7 @@ void printBitArray(BitArray* bit_array)
 	printf("\n");
 }
 
-int BitArray_to_int(BitArray* bit_array)
+int BitArray_to_int(BitArray *bit_array)
 {
 	int number = 0;
 
