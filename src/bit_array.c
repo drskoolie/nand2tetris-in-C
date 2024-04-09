@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "bit_array.h"
 
 void print_BitArray(BitArray* bit_array)
@@ -29,5 +30,9 @@ int BitArray_to_int(BitArray *bit_array)
 
 void int_to_BitArray(int input, BitArray *output)
 {
+	if (output->no_of_bits != 16) {
+		fprintf(stderr, "Error: %d bits given \n%s", 
+				output->no_of_bits, "int_to_BitArray is only for 16 bits!\n");
+	}
 
 }

@@ -48,6 +48,20 @@ void test_bit_array_to_int_2(void)
 	TEST_ASSERT_EQUAL_INT(output, correct);
 }
 
+void test_to_int_bit_array_0(void)
+{
+	int input = 10;
+
+	int no_of_bits = 16;
+	int output_bits[16] = {0};
+	int correct_bits[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0};
+
+	BitArray output = {output_bits, no_of_bits};
+	BitArray correct = {correct_bits, no_of_bits};
+
+	int_to_BitArray(input, &output);
+
+}
 
 int main(void) {
 	UNITY_BEGIN();
@@ -55,6 +69,7 @@ int main(void) {
 	RUN_TEST(test_bit_array_to_int_0);
 	RUN_TEST(test_bit_array_to_int_1);
 	RUN_TEST(test_bit_array_to_int_2);
+	RUN_TEST(test_to_int_bit_array_0);
 
 	return UNITY_END();
 }
