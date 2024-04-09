@@ -61,6 +61,10 @@ void test_to_int_bit_array_0(void)
 
 	int_to_BitArray(input, &output);
 
+	for (int i = 0; i < no_of_bits; i++) {
+		TEST_ASSERT_EQUAL_INT(correct.bits[i], output.bits[i]);
+	}
+
 }
 
 int main(void) {

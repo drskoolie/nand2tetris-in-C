@@ -35,4 +35,8 @@ void int_to_BitArray(int input, BitArray *output)
 				output->no_of_bits, "int_to_BitArray is only for 16 bits!\n");
 	}
 
+	for (int i = 0; i < 16; i++) {
+		output->bits[i] = (input >> (15 - i)) & 1;
+	}
+
 }
