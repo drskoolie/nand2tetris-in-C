@@ -97,6 +97,7 @@ class CompileC:
         for test_executable in test_executables:
             command = ['./' + test_executable]
             self._run_command(command)
+            print("\n\n")
 
     def clean(self):
         for file_name in os.listdir(self.bin_dir):

@@ -220,6 +220,46 @@ void test_xor_n_1(void)
 	}
 }
 
+void test_mux_n_sel_0(void)
+{
+	int selector = 0;
+
+	int no_of_bits = 4;
+	int input0_bits[] = {0, 1, 1, 0};
+	int input1_bits[] = {1, 1, 0, 0};
+	int output_bits[4] = {0};
+
+	BitArray input0 = {input0_bits, no_of_bits};
+	BitArray input1 = {input1_bits, no_of_bits};
+	BitArray output = {output_bits, no_of_bits};
+
+	mux_n(input0, input1, selector, &output);
+
+	for (int i = 0; i < no_of_bits; i++) {
+		TEST_ASSERT_EQUAL_INT(input0.bits[i], output.bits[i]);
+	}
+}
+
+void test_mux_n_sel_1(void)
+{
+	int selector = 1;
+
+	int no_of_bits = 4;
+	int input0_bits[] = {0, 1, 1, 0};
+	int input1_bits[] = {1, 1, 0, 0};
+	int output_bits[4] = {0};
+
+	BitArray input0 = {input0_bits, no_of_bits};
+	BitArray input1 = {input1_bits, no_of_bits};
+	BitArray output = {output_bits, no_of_bits};
+
+	mux_n(input0, input1, selector, &output);
+
+	for (int i = 0; i < no_of_bits; i++) {
+		TEST_ASSERT_EQUAL_INT(input1.bits[i], output.bits[i]);
+	}
+}
+
 int main(void) {
 	UNITY_BEGIN();
 	
@@ -233,6 +273,8 @@ int main(void) {
 	RUN_TEST(test_nand_n_1);
 	RUN_TEST(test_xor_n_0);
 	RUN_TEST(test_xor_n_1);
+	RUN_TEST(test_mux_n_sel_0);
+	RUN_TEST(test_mux_n_sel_1);
 
 	return UNITY_END();
 }

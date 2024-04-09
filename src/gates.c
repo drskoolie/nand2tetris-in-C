@@ -62,3 +62,10 @@ void xor_n(BitArray input0, BitArray input1, BitArray *output)
 		output->bits[i] = ( (input0.bits[i] && !input1.bits[i]) || (!input0.bits[i] && input1.bits[i]) );
 	}
 }
+
+void mux_n(BitArray input0, BitArray input1, int selector, BitArray *output)
+{
+	for (int i = 0; i < input0.no_of_bits; i++) {
+		output->bits[i] = (input0.bits[i] && !selector) || (input1.bits[i] && selector);
+	}
+}
