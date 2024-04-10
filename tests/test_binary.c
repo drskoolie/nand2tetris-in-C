@@ -42,7 +42,7 @@ void test_not(void)
 
 	uint16_t out = not(in);
 
-	TEST_ASSERT_EQUAL_INT(0b0101, out);
+	TEST_ASSERT_EQUAL_INT(0b1111111111110101, out);
 }
 
 
