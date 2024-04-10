@@ -64,6 +64,19 @@ void test_mux(void)
 	TEST_ASSERT_EQUAL_INT(in1, mux(in0, in1, 0b1));
 }
 
+void test_demux(void)
+{
+	uint16_t in = 0b1111;
+	uint16_t out0 = 0b0000;
+	uint16_t out1 = 0b0000;
+
+	demux(in, 0, &out0, &out1);
+
+	TEST_ASSERT_EQUAL_INT(in, out0);
+	TEST_ASSERT_EQUAL_INT(0b0000, out1);
+
+}
+
 int main(void) {
 	UNITY_BEGIN();
 	
@@ -73,6 +86,7 @@ int main(void) {
 	RUN_TEST(test_not);
 	RUN_TEST(test_xor);
 	RUN_TEST(test_mux);
+	RUN_TEST(test_demux);
 
 	return UNITY_END();
 }

@@ -40,3 +40,8 @@ uint16_t mux(uint16_t in0, uint16_t in1, uint16_t sel)
 		return in1;
 	}
 }
+
+void demux(uint16_t in, uint16_t sel, uint16_t *out0, uint16_t *out1)
+{
+
+}
