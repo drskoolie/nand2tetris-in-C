@@ -71,9 +71,15 @@ void test_demux(void)
 	uint16_t out1 = 0b0000;
 
 	demux(in, 0, &out0, &out1);
-
 	TEST_ASSERT_EQUAL_INT(in, out0);
 	TEST_ASSERT_EQUAL_INT(0b0000, out1);
+
+	out0 = 0b0000;
+	out1 = 0b0000;
+
+	demux(in, 1, &out0, &out1);
+	TEST_ASSERT_EQUAL_INT(in, out1);
+	TEST_ASSERT_EQUAL_INT(0b0000, out0);
 
 }
 
