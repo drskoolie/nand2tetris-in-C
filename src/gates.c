@@ -18,5 +18,5 @@ uint16_t and(uint16_t in0, uint16_t in1)
 
 uint16_t or(uint16_t in0, uint16_t in1)
 {
-	return in0;
+	return nand(nand(in0, in0), nand(in1, in1));
 }
