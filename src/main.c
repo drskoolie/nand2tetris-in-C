@@ -7,15 +7,8 @@
 int main()
 {
 
-	for (int i = 0; i < 8; i++){
-		printf("%d ", i);
-	}
-	printf("\n");
+	uint16_t a = 10;
+	uint16_t b = 20;
 
-	for (int i = 0; i < 8; ++i){
-		printf("%d ", i);
-	}
-	printf("\n");
-				
-	return 0;
+	adder(10, 20);
 }
