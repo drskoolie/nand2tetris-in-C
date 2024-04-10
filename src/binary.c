@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-void print_binary(int16_t input)
+void print_binary(uint16_t input)
 {
 	printf("Decimal: %u\n", input);
 	printf("Hex: 0x%X\n", input);
