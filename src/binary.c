@@ -12,5 +12,5 @@ void print_binary(uint16_t input)
 			printf(" ");
 		}
 	}
-	printf("\n");
+	printf("\n\n");
 }
