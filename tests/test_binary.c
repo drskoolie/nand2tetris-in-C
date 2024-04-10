@@ -36,6 +36,15 @@ void test_or(void)
 	TEST_ASSERT_EQUAL_INT(0b1110, out);
 }
 
+void test_not(void)
+{
+	uint16_t in = 0b1010;
+
+	uint16_t out = not(in);
+
+	TEST_ASSERT_EQUAL_INT(0b0101, out);
+}
+
 
 int main(void) {
 	UNITY_BEGIN();
@@ -43,6 +52,7 @@ int main(void) {
 	RUN_TEST(test_nand);
 	RUN_TEST(test_and);
 	RUN_TEST(test_or);
+	RUN_TEST(test_not);
 
 	return UNITY_END();
 }
