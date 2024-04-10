@@ -60,8 +60,8 @@ void test_mux(void)
 	uint16_t in0 = 0b1111;
 	uint16_t in1 = 0b0011;
 
-	TEST_ASSERT_EQUAL_INT(in0, mux(in0, in1, 0));
-	TEST_ASSERT_EQUAL_INT(in1, mux(in0, in1, 1));
+	TEST_ASSERT_EQUAL_INT(in0, mux(in0, in1, 0b0));
+	TEST_ASSERT_EQUAL_INT(in1, mux(in0, in1, 0b1));
 }
 
 int main(void) {
