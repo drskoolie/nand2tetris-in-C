@@ -27,11 +27,34 @@ void test_half_adder_sum(void)
 	TEST_ASSERT_EQUAL_INT(0, half_adder_sum(a, b));
 }
 
+void test_half_adder_carry(void)
+{
+	uint16_t a;
+	uint16_t b;
+
+	a = 0b0;
+	b = 0b0;
+	TEST_ASSERT_EQUAL_INT(0, half_adder_carry(a, b));
+
+	a = 0b0;
+	b = 0b1;
+	TEST_ASSERT_EQUAL_INT(0, half_adder_carry(a, b));
+
+	a = 0b1;
+	b = 0b0;
+	TEST_ASSERT_EQUAL_INT(0, half_adder_carry(a, b));
+
+	a = 0b1;
+	b = 0b1;
+	TEST_ASSERT_EQUAL_INT(1, half_adder_carry(a, b));
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
 	
 	RUN_TEST(test_half_adder_sum);
+	RUN_TEST(test_half_adder_carry);
 
 	return UNITY_END();
 }
