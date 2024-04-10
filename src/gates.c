@@ -28,5 +28,5 @@ uint16_t not(uint16_t in)
 
 uint16_t xor(uint16_t in0, uint16_t in1)
 {
-	return in0;
+	nand(nand(nand(in0, in0), in1), nand(in0, nand(in1, in1)));
 }
