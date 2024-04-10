@@ -25,3 +25,8 @@ uint16_t not(uint16_t in)
 {
 	return nand(in, in);
 }
+
+uint16_t xor(uint16_t in0, uint16_t in1)
+{
+	return in0;
+}

@@ -45,6 +45,15 @@ void test_not(void)
 	TEST_ASSERT_EQUAL_INT(0b1111111111110101, out);
 }
 
+void test_xor(void)
+{
+	uint16_t in0 = 0b1010;
+	uint16_t in1 = 0b1100;
+
+	uint16_t out = xor(in0, in1);
+
+	TEST_ASSERT_EQUAL_INT(0b0110, out);
+}
 
 int main(void) {
 	UNITY_BEGIN();
@@ -53,6 +62,7 @@ int main(void) {
 	RUN_TEST(test_and);
 	RUN_TEST(test_or);
 	RUN_TEST(test_not);
+	RUN_TEST(test_xor);
 
 	return UNITY_END();
 }
