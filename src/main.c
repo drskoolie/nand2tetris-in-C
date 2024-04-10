@@ -1,17 +1,14 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdint.h>
 
-#include "gates.h"
+#include "binary.h"
 
 int main()
 {
 
-	int no_of_bits = 8;
-	int bits[8] = {0};
+	int16_t my_int = 15;
+	print_binary(my_int);
 
-	BitArray input1 = {bits, no_of_bits};
-
-	print_BitArray(&input1);
-
+				
 	return 0;
 }
