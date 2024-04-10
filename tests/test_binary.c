@@ -83,7 +83,8 @@ void test_demux(void)
 
 }
 
-int main(void) {
+int main(void) 
+{
 	UNITY_BEGIN();
 	
 	RUN_TEST(test_nand);
