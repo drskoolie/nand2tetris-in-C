@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <stdint.h>
 
+#include "arithmetic.h"
 #include "binary.h"
 #include "gates.h"
 
 int main()
 {
 
-	uint16_t a = 10;
-	uint16_t b = 20;
+	uint16_t a = 0b1010;
+	uint16_t b = 0b1100;
 
-	adder(10, 20);
+	adder(a, b);
 }
