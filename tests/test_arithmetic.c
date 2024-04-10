@@ -143,6 +143,29 @@ void test_full_adder_carry(void)
 	TEST_ASSERT_EQUAL_INT(1, full_adder_carry(a, b, carry_in));
 }
 
+void test_adder(void)
+{
+	uint16_t a;
+	uint16_t b;
+
+	a = 10;
+	b = 20;
+	TEST_ASSERT_EQUAL_INT(30, adder(a, b));
+
+	a = 20;
+	b = 20;
+	TEST_ASSERT_EQUAL_INT(40, adder(a, b));
+
+	a = 0;
+	b = 20;
+	TEST_ASSERT_EQUAL_INT(20, adder(a, b));
+
+	a = 20;
+	b = 0;
+	TEST_ASSERT_EQUAL_INT(20, adder(a, b));
+
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
@@ -151,6 +174,7 @@ int main(void)
 	RUN_TEST(test_half_adder_carry);
 	RUN_TEST(test_full_adder_sum);
 	RUN_TEST(test_full_adder_carry);
+	RUN_TEST(test_adder);
 
 	return UNITY_END();
 }
