@@ -43,5 +43,9 @@ uint16_t mux(uint16_t in0, uint16_t in1, uint16_t sel)
 
 void demux(uint16_t in, uint16_t sel, uint16_t *out0, uint16_t *out1)
 {
-
+	if ((sel & 0b1) == 0) {
+		*out0 = in;
+	} else if ((sel & 0b1) == 1) {
+		*out1 = in;
+	}
 }
