@@ -36,7 +36,7 @@ uint16_t mux(uint16_t in0, uint16_t in1, uint16_t sel)
 	if ((sel & 0b1) == 0) {
 		return in0;
 	}
-	else if ((sel & 0b1) ==1) {
+	else {
 		return in1;
 	}
 }

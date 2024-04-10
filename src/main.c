@@ -7,10 +7,15 @@
 int main()
 {
 
-	uint16_t in0 = 0b1100;
-	uint16_t in1 = 0b0011;
+	for (int i = 0; i < 8; i++){
+		printf("%d ", i);
+	}
+	printf("\n");
 
-	print_binary(and(0b1101101, 0b1));
+	for (int i = 0; i < 8; ++i){
+		printf("%d ", i);
+	}
+	printf("\n");
 				
 	return 0;
 }
