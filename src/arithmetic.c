@@ -35,13 +35,7 @@ uint16_t adder(uint16_t a, uint16_t b)
 	for (int i = 0; i < 16; ++i) {
 		mask = 1 << i;
 		out |= full_adder_sum(and(a, mask), and(b, mask), carry_in);
-		carry_in = full_adder_sum(and(a, mask), and(b, mask), carry_in);
-
-		printf("i: %d\n", i);
-		printf("out: \n");
-		print_binary(out);
-		printf("carry_in: \n");
-		print_binary(carry_in);
+		carry_in = full_adder_carry(and(a, mask), and(b, mask), carry_in);
 	}
 
 	return out;
