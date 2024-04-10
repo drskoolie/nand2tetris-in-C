@@ -33,5 +33,10 @@ uint16_t xor(uint16_t in0, uint16_t in1)
 
 uint16_t mux(uint16_t in0, uint16_t in1, uint16_t sel)
 {
-	or(xor(xor(in0, in1), sel), and(in0, in1));
+	if (sel == 0) {
+		return in0;
+	}
+	else if (sel ==1) {
+		return in1;
+	}
 }
