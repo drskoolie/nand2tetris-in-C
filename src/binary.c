@@ -3,8 +3,8 @@
 
 void print_binary(uint16_t input)
 {
-	printf("Decimal: %u\n", input);
-	printf("Hex: 0x%X\n", input);
+	printf("Decimal: %u | ", input);
+	printf("Hex: 0x%X | ", input);
 	printf("Binary: ");
 	for (int i = 15; i >= 0; --i) {
 		printf("%d", (input >> i) & 1);
