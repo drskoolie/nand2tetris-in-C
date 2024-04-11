@@ -33,19 +33,27 @@ uint16_t xor(uint16_t in0, uint16_t in1)
 
 uint16_t mux(uint16_t in0, uint16_t in1, uint16_t sel)
 {
-	if ((sel & 0b1) == 0) {
-		return in0;
-	}
-	else {
-		return in1;
+	uint16_t out = 0;
+	uint16_t bit0 = 0;
+	uint16_t bit1 = 0;
+
+	for (int i = 0; i < 16; i++) {
+		bit0 = ((in0 >> i) & 0b1);
+		bit1 = ((in1 >> i) & 0b1);
+
+		out |= ((bit0 & ~sel) | (bit1 & sel)) << i;
 	}
 }
 
 void demux(uint16_t in, uint16_t sel, uint16_t *out0, uint16_t *out1)
 {
-	if ((sel & 0b1) == 0) {
-		*out0 = in;
-	} else if ((sel & 0b1) == 1) {
-		*out1 = in;
+
+	uint16_t bit_in = 0;
+
+	for (int i = 0; i < 16; i++) {
+		bit_in = ((in >> i) & 0b1);
+
+		*out0 |= (bit_in & ~sel) << i;
+		*out1 |= (bit_in & sel) << i;
 	}
 }
