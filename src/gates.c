@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #include "gates.h"
+#include "binary.h"
 
 uint16_t nand(uint16_t in0, uint16_t in1)
 {
@@ -56,4 +57,15 @@ void demux(uint16_t in, uint16_t sel, uint16_t *out0, uint16_t *out1)
 		*out0 |= (bit_in & ~sel) << i;
 		*out1 |= (bit_in & sel) << i;
 	}
+}
+
+uint16_t repeat_lsb(uint16_t lsb)
+{
+	uint16_t out = 0;
+
+	for (int i = 0; i < 16; i++) {
+		out |= (lsb << i);
+	}
+
+	return out;
 }

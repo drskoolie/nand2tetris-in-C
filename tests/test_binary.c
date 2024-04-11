@@ -83,6 +83,12 @@ void test_demux(void)
 
 }
 
+void test_repeat_lsb(void)
+{
+	TEST_ASSERT_EQUAL_INT(0, repeat_lsb(0));
+	TEST_ASSERT_EQUAL_INT(0b1111111111111111, repeat_lsb(0b1));
+}
+
 int main(void) 
 {
 	UNITY_BEGIN();
@@ -94,6 +100,7 @@ int main(void)
 	RUN_TEST(test_xor);
 	RUN_TEST(test_mux);
 	RUN_TEST(test_demux);
+	RUN_TEST(test_repeat_lsb);
 
 	return UNITY_END();
 }
