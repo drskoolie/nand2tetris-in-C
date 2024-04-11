@@ -172,6 +172,25 @@ void test_incrementer(void)
 	TEST_ASSERT_EQUAL(1, incrementer(a));
 }
 
+void test_alu_zx(void)
+{
+	uint16_t instruction_bits = 0b100000;
+	uint16_t x = 0b1111;
+	uint16_t y = 0;
+
+	uint16_t out = 0b1111;
+	uint16_t zr = 1;
+	uint16_t ng = 0;
+
+	alu(x, y, &out, &zr, &ng);
+	TEST_ASSERT_EQUAL(0, out);
+	TEST_ASSERT_EQUAL(1, zr);
+	TEST_ASSERT_EQUAL(0, ng);
+
+}
+
+
+
 int main(void)
 {
 	UNITY_BEGIN();
@@ -182,6 +201,7 @@ int main(void)
 	RUN_TEST(test_full_adder_carry);
 	RUN_TEST(test_adder);
 	RUN_TEST(test_incrementer);
+	RUN_TEST(test_alu_zx);
 
 	return UNITY_END();
 }
