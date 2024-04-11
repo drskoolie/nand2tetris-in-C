@@ -51,3 +51,8 @@ uint16_t adder(uint16_t a, uint16_t b)
 
 	return out;
 }
+
+uint16_t incrementer(uint16_t a)
+{
+	return adder(a, 0b1);
+}

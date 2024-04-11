@@ -166,6 +166,12 @@ void test_adder(void)
 
 }
 
+void test_incrementer(void)
+{
+	uint16_t a = 0;
+	TEST_ASSERT_EQUAL(1, incrementer(a));
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
@@ -175,6 +181,7 @@ int main(void)
 	RUN_TEST(test_full_adder_sum);
 	RUN_TEST(test_full_adder_carry);
 	RUN_TEST(test_adder);
+	RUN_TEST(test_incrementer);
 
 	return UNITY_END();
 }
