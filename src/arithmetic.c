@@ -60,5 +60,14 @@ uint16_t incrementer(uint16_t a)
 void alu(uint16_t x, uint16_t y, uint16_t instruction_bits, uint16_t *out, uint16_t *zr, uint16_t *ng)
 {
 	uint16_t zx = repeat_lsb((instruction_bits >> 5) & 0b1);
+	uint16_t nx = repeat_lsb((instruction_bits >> 4) & 0b1);
+	uint16_t zy = repeat_lsb((instruction_bits >> 3) & 0b1);
+	uint16_t ny = repeat_lsb((instruction_bits >> 2) & 0b1);
+	uint16_t f = repeat_lsb((instruction_bits >> 1) & 0b1);
+	uint16_t no = repeat_lsb((instruction_bits) & 0b1);
+
+	x &= ~zx;
+
+	*out = x;
 
 }

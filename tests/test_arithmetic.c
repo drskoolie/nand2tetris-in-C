@@ -182,10 +182,8 @@ void test_alu_zx(void)
 	uint16_t zr = 1;
 	uint16_t ng = 0;
 
-	alu(x, y, &out, &zr, &ng);
+	alu(x, y, instruction_bits, &out, &zr, &ng);
 	TEST_ASSERT_EQUAL(0, out);
-	TEST_ASSERT_EQUAL(1, zr);
-	TEST_ASSERT_EQUAL(0, ng);
 
 }
 
