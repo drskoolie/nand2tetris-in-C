@@ -69,6 +69,7 @@ void alu(uint16_t x, uint16_t y, uint16_t instruction_bits, uint16_t *out, uint1
 	uint16_t no = repeat_lsb((instruction_bits) & 0b1);
 
 	x &= ~zx;
+	y &= ~zy;
 
 	*out = adder(x, y, ng);
 
