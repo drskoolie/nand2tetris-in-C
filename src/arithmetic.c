@@ -77,5 +77,5 @@ void alu(uint16_t x, uint16_t y, uint16_t instruction_bits, uint16_t *out, uint1
 	*out ^= no;
 
 	*zr = comparater(*out, 0);
-	*ng = comparater(repeat_lsb((*out & 0b1000000000000000) >> 15), 0b1);
+	*ng = (*out & 0b1000000000000000) >> 15) & 0b1;
 }
