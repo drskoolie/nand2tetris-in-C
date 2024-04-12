@@ -13,7 +13,7 @@ uint16_t repeat_lsb(uint16_t lsb)
 	return out;
 }
 
-uint16_t comparator(uint16_t a, uint16_t b)
+uint16_t comparater(uint16_t a, uint16_t b)
 {
 	uint16_t compare = 0;
 	uint16_t out = 0b1;
