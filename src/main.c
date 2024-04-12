@@ -11,5 +11,5 @@ int main()
 	uint16_t a = 0b1010;
 	uint16_t b = 0b1100;
 
-	adder(a, b, 0b0);
+	adder(a, b);
 }

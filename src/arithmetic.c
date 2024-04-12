@@ -36,16 +36,16 @@ uint16_t full_adder_carry(uint16_t a, uint16_t b, uint16_t carry_in)
 	return or(or(and(a, b), and(a, carry_in)), and(b, carry_in));
 }
 
-uint16_t adder(uint16_t a, uint16_t b, uint16_t *carry_out)
+uint16_t adder(uint16_t a, uint16_t b)
 {
 	uint16_t sum_bit = 0b0;
-	*carry_out = 0b0;
+	uint16_t carry_in = 0b0;
 
 	uint16_t out = 0b0;
 
 	for (int i = 0; i < 16; ++i) {
-		sum_bit = full_adder_sum((a >> i) & 1, (b >> i) & 1, *carry_out);
-		*carry_out = full_adder_carry((a >> i) & 1, (b >> i) & 1, *carry_out);
+		sum_bit = full_adder_sum((a >> i) & 1, (b >> i) & 1, carry_in);
+		carry_in = full_adder_carry((a >> i) & 1, (b >> i) & 1, carry_in);
 
 		out |= sum_bit << i;
 	}
@@ -55,8 +55,7 @@ uint16_t adder(uint16_t a, uint16_t b, uint16_t *carry_out)
 
 uint16_t incrementer(uint16_t a)
 {
-	uint16_t carry_out = 0;
-	return adder(a, 0b1, &carry_out);
+	return adder(a, 0b1);
 }
 
 void alu(uint16_t x, uint16_t y, uint16_t instruction_bits, uint16_t *out, uint16_t *zr, uint16_t *ng)
@@ -73,7 +72,9 @@ void alu(uint16_t x, uint16_t y, uint16_t instruction_bits, uint16_t *out, uint1
 	y &= ~zy;
 	y ^= ny;
 
-	*out = adder(x, y, ng);
+	*out = adder(x, y);
+	*out = mux(adder(x, y), x & y, f);
+	*out ^= no;
 
 	*zr = comparater(*out, 0);
 	*ng = comparater(repeat_lsb((*out & 0b1000000000000000) >> 15), 0b1);
