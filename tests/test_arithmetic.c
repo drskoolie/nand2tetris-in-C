@@ -185,6 +185,7 @@ void test_alu_zx(void)
 
 	alu(x, y, instruction_bits, &out, &zr, &ng);
 	TEST_ASSERT_EQUAL_INT(0, out);
+	TEST_ASSERT_EQUAL_INT(0b1, zr & 0b1);
 }
 
 int main(void)
