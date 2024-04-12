@@ -24,3 +24,6 @@ bin/*
 
 # Dependency files
 *.d
+
+# Clang
+.cache/**
