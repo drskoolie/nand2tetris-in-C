@@ -44,6 +44,8 @@ uint16_t mux(uint16_t in0, uint16_t in1, uint16_t sel)
 
 		out |= ((bit0 & ~sel) | (bit1 & sel)) << i;
 	}
+
+	return out;
 }
 
 void demux(uint16_t in, uint16_t sel, uint16_t *out0, uint16_t *out1)

@@ -147,22 +147,23 @@ void test_adder(void)
 {
 	uint16_t a;
 	uint16_t b;
+	uint16_t carry_out;
 
 	a = 10;
 	b = 20;
-	TEST_ASSERT_EQUAL_INT(30, adder(a, b));
+	TEST_ASSERT_EQUAL_INT(30, adder(a, b, &carry_out));
 
 	a = 20;
 	b = 20;
-	TEST_ASSERT_EQUAL_INT(40, adder(a, b));
+	TEST_ASSERT_EQUAL_INT(40, adder(a, b, &carry_out));
 
 	a = 0;
 	b = 20;
-	TEST_ASSERT_EQUAL_INT(20, adder(a, b));
+	TEST_ASSERT_EQUAL_INT(20, adder(a, b, &carry_out));
 
 	a = 20;
 	b = 0;
-	TEST_ASSERT_EQUAL_INT(20, adder(a, b));
+	TEST_ASSERT_EQUAL_INT(20, adder(a, b, &carry_out));
 
 }
 
@@ -184,10 +185,7 @@ void test_alu_zx(void)
 
 	alu(x, y, instruction_bits, &out, &zr, &ng);
 	TEST_ASSERT_EQUAL(0, out);
-
 }
-
-
 
 int main(void)
 {
