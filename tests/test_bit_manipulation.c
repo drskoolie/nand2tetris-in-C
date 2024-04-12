@@ -1,3 +1,4 @@
+#include "unity.h"
 #include "bit_manipulation.h"
 
 void setUp(void) {}
@@ -15,7 +16,7 @@ void test_comparator(void)
 	TEST_ASSERT_EQUAL_INT(0, comparator(0, 1));
 	TEST_ASSERT_EQUAL_INT(0b1, comparator(0, 0));
 	TEST_ASSERT_EQUAL_INT(0b1, comparator(0b1101, 0b1101));
-	TEST_ASSERT_EQUAL_INT(0b1, comparator(0b0101, 0b1101));
+	TEST_ASSERT_EQUAL_INT(0b0, comparator(0b0101, 0b1101));
 }
 
 int main(void) 

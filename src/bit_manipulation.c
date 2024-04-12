@@ -15,6 +15,6 @@ uint16_t repeat_lsb(uint16_t lsb)
 uint16_t comparator(uint16_t a, uint16_t b)
 {
 	uint16_t out = 0;
-	return out;
 
+	return out;
 }
