@@ -220,6 +220,16 @@ void test_alu_zy(void)
 	TEST_ASSERT_EQUAL_INT(0, ng);
 }
 
+void test_alu_nx(void)
+{
+	uint16_t instruction_bits;
+	uint16_t x = 0b1111;
+	uint16_t y = 0;
+
+	uint16_t out;
+
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
