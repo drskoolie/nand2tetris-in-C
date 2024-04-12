@@ -175,7 +175,7 @@ void test_incrementer(void)
 
 void test_alu_zx(void)
 {
-	uint16_t instruction_bits;;
+	uint16_t instruction_bits;
 	uint16_t x = 0b1111;
 	uint16_t y = 0;
 
@@ -186,11 +186,13 @@ void test_alu_zx(void)
 	instruction_bits = 0b100000;
 	alu(x, y, instruction_bits, &out, &zr, &ng);
 	TEST_ASSERT_EQUAL_INT(0, out);
+	TEST_ASSERT_EQUAL_INT(1, zr);
 
 	y = 10;
 	instruction_bits = 0b100000;
 	alu(x, y, instruction_bits, &out, &zr, &ng);
 	TEST_ASSERT_EQUAL_INT(y, out);
+	TEST_ASSERT_EQUAL_INT(0, zr);
 }
 
 int main(void)
