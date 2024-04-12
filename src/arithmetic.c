@@ -73,9 +73,9 @@ void alu(uint16_t x, uint16_t y, uint16_t instruction_bits, uint16_t *out, uint1
 	y ^= ny;
 
 	*out = adder(x, y);
-	*out = mux(adder(x, y), x & y, f);
+	*out = mux(x & y, adder(x, y), f);
 	*out ^= no;
 
 	*zr = comparater(*out, 0);
-	*ng = (*out & 0b1000000000000000) >> 15) & 0b1;
+	*ng = ((*out & 0b1000000000000000) >> 15) & 0b1;
 }
