@@ -60,14 +60,3 @@ void demux(uint16_t in, uint16_t sel, uint16_t *out0, uint16_t *out1)
 		*out1 |= (bit_in & sel) << i;
 	}
 }
-
-uint16_t repeat_lsb(uint16_t lsb)
-{
-	uint16_t out = 0;
-
-	for (int i = 0; i < 16; i++) {
-		out |= (lsb << i);
-	}
-
-	return out;
-}

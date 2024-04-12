@@ -3,6 +3,7 @@
 
 #include "arithmetic.h"
 #include "binary.h"
+#include "bit_manipulation.h"
 #include "gates.h"
 
 uint16_t half_adder_sum(uint16_t a, uint16_t b)
@@ -68,6 +69,5 @@ void alu(uint16_t x, uint16_t y, uint16_t instruction_bits, uint16_t *out, uint1
 
 	x &= ~zx;
 
-	*out = x;
-
+	*out = adder(x, y, ng);
 }

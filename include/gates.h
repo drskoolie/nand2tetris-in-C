@@ -8,6 +8,5 @@ uint16_t not(uint16_t in);
 uint16_t xor(uint16_t in0, uint16_t in1);
 uint16_t mux(uint16_t in0, uint16_t in1, uint16_t sel);
 void demux(uint16_t in, uint16_t sel, uint16_t *out0, uint16_t *out1);
-uint16_t repeat_lsb(uint16_t lsb);
 
 #endif
