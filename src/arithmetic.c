@@ -55,7 +55,8 @@ uint16_t adder(uint16_t a, uint16_t b, uint16_t *carry_out)
 
 uint16_t incrementer(uint16_t a)
 {
-	return adder(a, 0b1, 0b0);
+	uint16_t carry_out = 0;
+	return adder(a, 0b1, &carry_out);
 }
 
 void alu(uint16_t x, uint16_t y, uint16_t instruction_bits, uint16_t *out, uint16_t *zr, uint16_t *ng)
