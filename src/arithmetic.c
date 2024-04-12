@@ -71,5 +71,6 @@ void alu(uint16_t x, uint16_t y, uint16_t instruction_bits, uint16_t *out, uint1
 	x &= ~zx;
 
 	*out = adder(x, y, ng);
-	*ng = comparater(*ng, 0);
+	*zr = comparater(*zr, 0);
+	print_binary(*zr);
 }
