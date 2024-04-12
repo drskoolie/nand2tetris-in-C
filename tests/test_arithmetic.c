@@ -181,18 +181,20 @@ void test_alu_zx(void)
 
 	uint16_t out = 0b1111;
 	uint16_t zr = 1;
-	uint16_t ng = 0;
+	uint16_t ng = 1;
 
 	instruction_bits = 0b100000;
 	alu(x, y, instruction_bits, &out, &zr, &ng);
 	TEST_ASSERT_EQUAL_INT(0, out);
 	TEST_ASSERT_EQUAL_INT(1, zr);
+	TEST_ASSERT_EQUAL_INT(0, ng);
 
 	y = 10;
 	instruction_bits = 0b100000;
 	alu(x, y, instruction_bits, &out, &zr, &ng);
 	TEST_ASSERT_EQUAL_INT(y, out);
 	TEST_ASSERT_EQUAL_INT(0, zr);
+	TEST_ASSERT_EQUAL_INT(0, ng);
 }
 
 int main(void)
