@@ -1,6 +1,5 @@
 #include <stdint.h>
 #include "bit_manipulation.h"
-#include "gates.h"
 
 uint16_t repeat_lsb(uint16_t lsb)
 {
