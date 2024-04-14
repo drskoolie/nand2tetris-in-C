@@ -1,3 +1,4 @@
+#include <stdint.h>
 #include "unity.h"
 #include "gates.h"
 
@@ -12,7 +13,7 @@ void test_nand(void)
 
 	int16_t out = nand(in0, in1);
 
-	TEST_ASSERT_EQUAL_INT(0b1111111111110111, out);
+	TEST_ASSERT_EQUAL_INT((int16_t)0b1111111111110111, out);
 }
 
 void test_and(void)
@@ -42,7 +43,7 @@ void test_not(void)
 
 	int16_t out = not(in);
 
-	TEST_ASSERT_EQUAL_INT(0b1111111111110101, out);
+	TEST_ASSERT_EQUAL_INT((int16_t)0b1111111111110101, out);
 }
 
 void test_xor(void)
