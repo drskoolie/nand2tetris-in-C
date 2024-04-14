@@ -6,6 +6,11 @@
     },
     {
         "directory": "/home/drskoolie/github/nand2tetris/",
+        "command": "gcc -Iinclude -c src/sequential.c -o obj/sequential.o",
+        "file": "src/sequential.c"
+    },
+    {
+        "directory": "/home/drskoolie/github/nand2tetris/",
         "command": "gcc -Iinclude -c src/binary.c -o obj/binary.o",
         "file": "src/binary.c"
     },
@@ -26,17 +31,7 @@
     },
     {
         "directory": "/home/drskoolie/github/nand2tetris/",
-        "command": "gcc -Iinclude -Iunity -c src/test_gates.c -o obj/test_gates.o",
-        "file": "src/test_gates.c"
-    },
-    {
-        "directory": "/home/drskoolie/github/nand2tetris/",
-        "command": "gcc -Iinclude -Iunity -c src/test_arithmetic.c -o obj/test_arithmetic.o",
-        "file": "src/test_arithmetic.c"
-    },
-    {
-        "directory": "/home/drskoolie/github/nand2tetris/",
-        "command": "gcc -Iinclude -Iunity -c src/test_bit_manipulation.c -o obj/test_bit_manipulation.o",
-        "file": "src/test_bit_manipulation.c"
+        "command": "gcc -Iinclude -Iunity -c src/test_sequential.c -o obj/test_sequential.o",
+        "file": "src/test_sequential.c"
     }
 ]
