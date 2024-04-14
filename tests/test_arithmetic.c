@@ -220,14 +220,19 @@ void test_alu_zy(void)
 	TEST_ASSERT_EQUAL_INT(0, ng);
 }
 
-void test_alu_nx(void)
+void test_alu_zero(void)
 {
 	uint16_t instruction_bits;
 	uint16_t x = 0b1111;
 	uint16_t y = 0;
+	uint16_t zr = 0;
+	uint16_t ng = 1;
 
 	uint16_t out;
+	instruction_bits = 0b101010;
 
+	alu(x, y, instruction_bits, &out, &zr, &ng);
+	TEST_ASSERT_EQUAL_INT(0, out);
 }
 
 int main(void)
@@ -242,6 +247,7 @@ int main(void)
 	RUN_TEST(test_incrementer);
 	RUN_TEST(test_alu_zx);
 	RUN_TEST(test_alu_zy);
+	RUN_TEST(test_alu_zero);
 
 	return UNITY_END();
 }
