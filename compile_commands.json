@@ -23,5 +23,20 @@
         "directory": "/home/drskoolie/github/nand2tetris/",
         "command": "gcc -Iinclude -c src/main.c -o obj/main.o",
         "file": "src/main.c"
+    },
+    {
+        "directory": "/home/drskoolie/github/nand2tetris/",
+        "command": "gcc -Iinclude -Iunity -c src/test_binary.c -o obj/test_binary.o",
+        "file": "src/test_binary.c"
+    },
+    {
+        "directory": "/home/drskoolie/github/nand2tetris/",
+        "command": "gcc -Iinclude -Iunity -c src/test_arithmetic.c -o obj/test_arithmetic.o",
+        "file": "src/test_arithmetic.c"
+    },
+    {
+        "directory": "/home/drskoolie/github/nand2tetris/",
+        "command": "gcc -Iinclude -Iunity -c src/test_bit_manipulation.c -o obj/test_bit_manipulation.o",
+        "file": "src/test_bit_manipulation.c"
     }
 ]

@@ -39,6 +39,7 @@ class CompileC:
     def _generate_json(self):
         project_root = '/home/drskoolie/github/nand2tetris/'
         src_path = os.path.join(project_root, 'src')
+        test_path = os.path.join(project_root, 'tests')
 
         commands = []
 
@@ -49,6 +50,17 @@ class CompileC:
                 command = {
                     "directory": project_root,
                     "command": f"gcc -Iinclude -c {src_file} -o {obj_file}",
+                    "file": src_file
+                }
+                commands.append(command)
+
+        for file in os.listdir(test_path):
+            if file.endswith('.c'):
+                src_file = os.path.join('src', file)
+                obj_file = os.path.join('obj', file.replace('.c', '.o'))
+                command = {
+                    "directory": project_root,
+                    "command": f"gcc -Iinclude -Iunity -c {src_file} -o {obj_file}",
                     "file": src_file
                 }
                 commands.append(command)
