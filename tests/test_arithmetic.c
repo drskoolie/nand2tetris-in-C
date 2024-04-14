@@ -277,9 +277,9 @@ int main(void)
 	RUN_TEST(test_full_adder_carry);
 	RUN_TEST(test_adder);
 	RUN_TEST(test_incrementer);
-	// RUN_TEST(test_alu_zx);
-	// RUN_TEST(test_alu_zy);
-	// RUN_TEST(test_alu_zero);
+	RUN_TEST(test_alu_zx);
+	RUN_TEST(test_alu_zy);
+	RUN_TEST(test_alu_zero);
 	RUN_TEST(test_alu_one);
 	RUN_TEST(test_alu_negative_one);
 
