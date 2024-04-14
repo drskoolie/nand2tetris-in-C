@@ -1,8 +1,6 @@
-#include <stdio.h>
 #include <stdint.h>
 
 #include "arithmetic.h"
-#include "binary.h"
 #include "bit_manipulation.h"
 #include "gates.h"
 
