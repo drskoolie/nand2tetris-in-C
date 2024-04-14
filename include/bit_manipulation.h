@@ -3,7 +3,7 @@
 
 #include<stdint.h>
 
-uint16_t repeat_lsb(uint16_t lsb);
-uint16_t comparater(uint16_t a, uint16_t b);
+int16_t repeat_lsb(int16_t lsb);
+int16_t comparater(int16_t a, int16_t b);
 
 #endif

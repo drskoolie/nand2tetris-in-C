@@ -7,8 +7,8 @@ void tearDown(void) {}
 
 void test_half_adder_sum(void)
 {
-	uint16_t a;
-	uint16_t b;
+	int16_t a;
+	int16_t b;
 
 	a = 0b0;
 	b = 0b0;
@@ -29,8 +29,8 @@ void test_half_adder_sum(void)
 
 void test_half_adder_carry(void)
 {
-	uint16_t a;
-	uint16_t b;
+	int16_t a;
+	int16_t b;
 
 	a = 0b0;
 	b = 0b0;
@@ -51,9 +51,9 @@ void test_half_adder_carry(void)
 
 void test_full_adder_sum(void)
 {
-	uint16_t a;
-	uint16_t b;
-	uint16_t carry_in;
+	int16_t a;
+	int16_t b;
+	int16_t carry_in;
 
 	a = 0b0;
 	b = 0b0;
@@ -98,9 +98,9 @@ void test_full_adder_sum(void)
 
 void test_full_adder_carry(void)
 {
-	uint16_t a;
-	uint16_t b;
-	uint16_t carry_in;
+	int16_t a;
+	int16_t b;
+	int16_t carry_in;
 
 	a = 0b0;
 	b = 0b0;
@@ -145,8 +145,8 @@ void test_full_adder_carry(void)
 
 void test_adder(void)
 {
-	uint16_t a;
-	uint16_t b;
+	int16_t a;
+	int16_t b;
 
 	a = 10;
 	b = 20;
@@ -168,19 +168,19 @@ void test_adder(void)
 
 void test_incrementer(void)
 {
-	uint16_t a = 0;
+	int16_t a = 0;
 	TEST_ASSERT_EQUAL_INT(1, incrementer(a));
 }
 
 void test_alu_zx(void)
 {
-	uint16_t instruction_bits;
-	uint16_t x = 0b1111;
-	uint16_t y = 0;
+	int16_t instruction_bits;
+	int16_t x = 0b1111;
+	int16_t y = 0;
 
-	uint16_t out = 0b1111;
-	uint16_t zr = 1;
-	uint16_t ng = 1;
+	int16_t out = 0b1111;
+	int16_t zr = 1;
+	int16_t ng = 1;
 
 	instruction_bits = 0b100010;
 	alu(x, y, instruction_bits, &out, &zr, &ng);
@@ -198,13 +198,13 @@ void test_alu_zx(void)
 
 void test_alu_zy(void)
 {
-	uint16_t instruction_bits;
-	uint16_t x = 0b1111;
-	uint16_t y = 0b1111;
+	int16_t instruction_bits;
+	int16_t x = 0b1111;
+	int16_t y = 0b1111;
 
-	uint16_t out = 0b1111;
-	uint16_t zr = 0;
-	uint16_t ng = 1;
+	int16_t out = 0b1111;
+	int16_t zr = 0;
+	int16_t ng = 1;
 
 	instruction_bits = 0b001010;
 	alu(x, y, instruction_bits, &out, &zr, &ng);
@@ -222,13 +222,13 @@ void test_alu_zy(void)
 
 void test_alu_zero(void)
 {
-	uint16_t instruction_bits;
-	uint16_t x = 0b1111;
-	uint16_t y = 0;
-	uint16_t zr = 0;
-	uint16_t ng = 1;
+	int16_t instruction_bits;
+	int16_t x = 0b1111;
+	int16_t y = 0;
+	int16_t zr = 0;
+	int16_t ng = 1;
 
-	uint16_t out;
+	int16_t out;
 	instruction_bits = 0b101010;
 
 	alu(x, y, instruction_bits, &out, &zr, &ng);
@@ -238,13 +238,13 @@ void test_alu_zero(void)
 
 void test_alu_one(void)
 {
-	uint16_t instruction_bits;
-	uint16_t x = 0b1111;
-	uint16_t y = 0;
-	uint16_t zr = 0;
-	uint16_t ng = 1;
+	int16_t instruction_bits;
+	int16_t x = 0b1111;
+	int16_t y = 0;
+	int16_t zr = 0;
+	int16_t ng = 1;
 
-	uint16_t out;
+	int16_t out;
 	instruction_bits = 0b111111;
 
 	alu(x, y, instruction_bits, &out, &zr, &ng);
@@ -253,13 +253,13 @@ void test_alu_one(void)
 
 void test_alu_negative_one(void)
 {
-	uint16_t instruction_bits;
-	uint16_t x = 0b1111;
-	uint16_t y = 0;
-	uint16_t zr = 0;
-	uint16_t ng = 1;
+	int16_t instruction_bits;
+	int16_t x = 0b1111;
+	int16_t y = 0;
+	int16_t zr = 0;
+	int16_t ng = 1;
 
-	uint16_t out;
+	int16_t out;
 	instruction_bits = 0b111010;
 
 	alu(x, y, instruction_bits, &out, &zr, &ng);

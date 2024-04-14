@@ -1,38 +1,38 @@
 #include <stdint.h>
 #include "gates.h"
 
-uint16_t nand(uint16_t in0, uint16_t in1)
+int16_t nand(int16_t in0, int16_t in1)
 {
 	return ~(in0 & in1);
 }
 
-uint16_t and(uint16_t in0, uint16_t in1)
+int16_t and(int16_t in0, int16_t in1)
 {
-	uint16_t out = nand(in0, in1);
+	int16_t out = nand(in0, in1);
 
 	return nand(out, out);
 }
 
-uint16_t or(uint16_t in0, uint16_t in1)
+int16_t or(int16_t in0, int16_t in1)
 {
 	return nand(nand(in0, in0), nand(in1, in1));
 }
 
-uint16_t not(uint16_t in)
+int16_t not(int16_t in)
 {
 	return nand(in, in);
 }
 
-uint16_t xor(uint16_t in0, uint16_t in1)
+int16_t xor(int16_t in0, int16_t in1)
 {
 	return nand(nand(nand(in0, in0), in1), nand(in0, nand(in1, in1)));
 }
 
-uint16_t mux(uint16_t in0, uint16_t in1, uint16_t sel)
+int16_t mux(int16_t in0, int16_t in1, int16_t sel)
 {
-	uint16_t out = 0;
-	uint16_t bit0 = 0;
-	uint16_t bit1 = 0;
+	int16_t out = 0;
+	int16_t bit0 = 0;
+	int16_t bit1 = 0;
 
 	for (int i = 0; i < 16; i++) {
 		bit0 = ((in0 >> i) & 0b1);
@@ -44,10 +44,10 @@ uint16_t mux(uint16_t in0, uint16_t in1, uint16_t sel)
 	return out;
 }
 
-void demux(uint16_t in, uint16_t sel, uint16_t *out0, uint16_t *out1)
+void demux(int16_t in, int16_t sel, int16_t *out0, int16_t *out1)
 {
 
-	uint16_t bit_in = 0;
+	int16_t bit_in = 0;
 
 	for (int i = 0; i < 16; i++) {
 		bit_in = ((in >> i) & 0b1);

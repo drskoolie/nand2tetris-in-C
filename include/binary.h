@@ -3,6 +3,6 @@
 
 #include <stdint.h>
 
-void print_binary(uint16_t input);
+void print_binary(int16_t input);
 
 #endif
