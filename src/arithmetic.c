@@ -1,6 +1,8 @@
+#include <stdio.h>
 #include <stdint.h>
 
 #include "arithmetic.h"
+#include "binary.h"
 #include "bit_manipulation.h"
 #include "gates.h"
 
@@ -65,14 +67,31 @@ void alu(uint16_t x, uint16_t y, uint16_t instruction_bits, uint16_t *out, uint1
 	uint16_t f = repeat_lsb((instruction_bits >> 1) & 0b1);
 	uint16_t no = repeat_lsb((instruction_bits) & 0b1);
 
+	printf("x: ");
+	print_binary(x);
 	x &= ~zx;
+	printf("x & ~zx: ");
+	print_binary(x);
 	x ^= nx;
+	printf("x ^ nx: ");
+	print_binary(x);
+
+	printf("y: ");
+	print_binary(y);
 	y &= ~zy;
+	printf("y & ~zy: ");
+	print_binary(y);
 	y ^= ny;
+	printf("y ^ ny: ");
+	print_binary(y);
 
 	*out = adder(x, y);
+	printf("out: ");
+	print_binary(*out);
 	*out = mux(x & y, adder(x, y), f);
 	*out ^= no;
+	printf("out ^: ");
+	print_binary(*out);
 
 	*zr = comparater(*out, 0);
 	*ng = ((*out & 0b1000000000000000) >> 15) & 0b1;
