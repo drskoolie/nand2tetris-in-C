@@ -266,6 +266,21 @@ void test_alu_negative_one(void)
 	TEST_ASSERT_EQUAL_INT(-1, out);
 }
 
+void test_alu_only_x(void)
+{
+	int16_t instruction_bits;
+	int16_t x = 0b0101;
+	int16_t y = 0b0111;
+	int16_t zr = 0;
+	int16_t ng = 0;
+
+	int16_t out;
+	instruction_bits = 0b001100;
+
+	alu(x, y, instruction_bits, &out, &zr, &ng);
+	TEST_ASSERT_EQUAL_INT(0b0101, out);
+}
+
 
 int main(void)
 {
@@ -282,6 +297,7 @@ int main(void)
 	RUN_TEST(test_alu_zero);
 	RUN_TEST(test_alu_one);
 	RUN_TEST(test_alu_negative_one);
+	RUN_TEST(test_alu_only_x);
 
 	return UNITY_END();
 }
