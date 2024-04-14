@@ -386,6 +386,36 @@ void test_alu_only_y_minus_1(void)
 	TEST_ASSERT_EQUAL_INT(0, out);
 }
 
+void test_alu_x_plus_y(void)
+{
+	int16_t instruction_bits;
+	int16_t x = 10;
+	int16_t y = 15;
+	int16_t zr = 0;
+	int16_t ng = 0;
+
+	int16_t out;
+	instruction_bits = 0b000010;
+
+	alu(x, y, instruction_bits, &out, &zr, &ng);
+	TEST_ASSERT_EQUAL_INT(10 + 15, out);
+}
+
+void test_alu_x_minus_y(void)
+{
+	int16_t instruction_bits;
+	int16_t x = 10;
+	int16_t y = 15;
+	int16_t zr = 0;
+	int16_t ng = 0;
+
+	int16_t out;
+	instruction_bits = 0b010011;
+
+	alu(x, y, instruction_bits, &out, &zr, &ng);
+	TEST_ASSERT_EQUAL_INT(10 - 15, out);
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
@@ -409,6 +439,8 @@ int main(void)
 	RUN_TEST(test_alu_only_y_plus_1);
 	RUN_TEST(test_alu_only_x_minus_1);
 	RUN_TEST(test_alu_only_y_minus_1);
+	RUN_TEST(test_alu_x_plus_y);
+	RUN_TEST(test_alu_x_minus_y);
 
 	return UNITY_END();
 }
