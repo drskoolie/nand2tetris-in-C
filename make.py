@@ -1,4 +1,5 @@
 import glob
+import json
 import os
 import shutil
 import subprocess
@@ -34,6 +35,27 @@ class CompileC:
             subprocess.run(command, check=True, capture_output=False, text=True)
         except subprocess.CalledProcessError:
             print(f"Failed to run {command}")
+
+    def _generate_json(self):
+        project_root = '/home/drskoolie/github/nand2tetris/'
+        src_path = os.path.join(project_root, 'src')
+
+        commands = []
+
+        for file in os.listdir(src_path):
+            if file.endswith('.c'):
+                src_file = os.path.join('src', file)
+                obj_file = os.path.join('obj', file.replace('.c', '.o'))
+                command = {
+                    "directory": project_root,
+                    "command": f"gcc -Iinclude -c {src_file} -o {obj_file}",
+                    "file": src_file
+                }
+                commands.append(command)
+
+        with open(os.path.join(project_root, 'compile_commands.json'), 'w') as f:
+            json.dump(commands, f, indent=4)
+
 
     def compile_file(self, src_path, obj_path):
         """Compile a single source file to an object file."""
@@ -119,10 +141,16 @@ class CompileC:
                 shutil.rmtree(file_path)
                 print(f"Deleted: {file_path}")
 
+        json_path = "compile_commands.json"
+        if os.path.isfile(json_path):
+            os.remove(json_path)
+            print(f"Deleted: {json_path}")
+
 
 def compile():
     cc = CompileC()
 
+    cc._generate_json()
     cc.compile_sources()
     cc.link_sources()
 
@@ -146,6 +174,7 @@ def run():
 def warning():
     cc = CompileC(warning = True)
 
+    cc._generate_json()
     cc.compile_sources()
     cc.link_sources()
 
