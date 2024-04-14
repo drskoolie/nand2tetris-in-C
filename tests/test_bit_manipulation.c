@@ -1,3 +1,4 @@
+#include <stdint.h>
 #include "unity.h"
 #include "bit_manipulation.h"
 
@@ -8,7 +9,7 @@ void tearDown(void) {}
 void test_repeat_lsb(void)
 {
 	TEST_ASSERT_EQUAL_INT(0, repeat_lsb(0));
-	TEST_ASSERT_EQUAL_INT(0b1111111111111111, repeat_lsb(0b1));
+	TEST_ASSERT_EQUAL_INT((int16_t)0b1111111111111111, repeat_lsb(0b1));
 }
 
 void test_comparater(void)
