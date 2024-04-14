@@ -93,8 +93,9 @@ class CompileC:
         test_obj_paths = [path.replace('.c', '.o') for path in test_paths]
 
         for test_path, test_obj_path in zip(test_paths, test_obj_paths):
-            self.compile_file(os.path.join(self.test_dir, test_path),
-                              os.path.join(self.test_obj_dir, test_obj_path))
+            if test_path != "archive":
+                self.compile_file(os.path.join(self.test_dir, test_path),
+                                  os.path.join(self.test_obj_dir, test_obj_path))
 
     def link_sources(self):
         if not os.path.exists(self.bin_dir):
