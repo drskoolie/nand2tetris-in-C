@@ -141,11 +141,6 @@ class CompileC:
                 shutil.rmtree(file_path)
                 print(f"Deleted: {file_path}")
 
-        json_path = "compile_commands.json"
-        if os.path.isfile(json_path):
-            os.remove(json_path)
-            print(f"Deleted: {json_path}")
-
 
 def compile():
     cc = CompileC()
