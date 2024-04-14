@@ -26,8 +26,8 @@
     },
     {
         "directory": "/home/drskoolie/github/nand2tetris/",
-        "command": "gcc -Iinclude -Iunity -c src/test_binary.c -o obj/test_binary.o",
-        "file": "src/test_binary.c"
+        "command": "gcc -Iinclude -Iunity -c src/test_gates.c -o obj/test_gates.o",
+        "file": "src/test_gates.c"
     },
     {
         "directory": "/home/drskoolie/github/nand2tetris/",
