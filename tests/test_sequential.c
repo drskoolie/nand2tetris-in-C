@@ -142,12 +142,17 @@ void test_update_ram1_select_0(void)
 
 	tock();
 	update_ram1(ff, 0);
+	TEST_ASSERT_EQUAL_INT(0, ff->intermediate);
 	TEST_ASSERT_EQUAL_INT(0, *ff->out);
+
 	tick();
 	update_ram1(ff, 0);
+	TEST_ASSERT_EQUAL_INT(0, ff->intermediate);
 	TEST_ASSERT_EQUAL_INT(0, *ff->out);
+
 	tock();
 	update_ram1(ff, 0);
+	TEST_ASSERT_EQUAL_INT(0, ff->intermediate);
 	TEST_ASSERT_EQUAL_INT(0, *ff->out);
 }
 
