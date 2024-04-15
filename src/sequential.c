@@ -42,7 +42,8 @@ void destroy_flip_flop(flip_flop *ff)
 	}
 }
 
-void update_flip_flop(flip_flop *ff) {
+void update_flip_flop(flip_flop *ff)
+{
     if (get_clock() == 1) {   // Rising edge: capture the current input
         ff->intermediate = *(ff->in);
     }
@@ -51,7 +52,7 @@ void update_flip_flop(flip_flop *ff) {
     }
 }
 
-void set_intermediate_flip_flop(flip_flop *ff, int16_t in) { 
-
-	ff->intermediate = in;
+void set_intermediate_flip_flop(flip_flop *ff, int16_t intermediate)
+{ 
+	ff->intermediate = intermediate;
 }
