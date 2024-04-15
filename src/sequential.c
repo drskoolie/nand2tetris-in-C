@@ -87,6 +87,13 @@ void update_flip_flop(flip_flop *ff)
     }
 }
 
+void update_flip_flops(flip_flop **ffs, uint16_t num_flip_flops)
+{
+	for (int i = 0; i < num_flip_flops; i++) {
+		update_flip_flop(ffs[i]);
+	}
+}
+
 void print_flip_flop(flip_flop *ff)
 {
 	printf("------------------------------\n");
