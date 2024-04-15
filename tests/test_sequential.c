@@ -278,6 +278,28 @@ void test_set_counter_load(void)
 	destroy_counter(counter);
 }
 
+void test_set_counter_reset(void)
+{
+	flip_flop *counter;
+	counter = initialize_counter();
+
+	set_counter(counter, 0, 1, 0, 100);
+	tick();
+	update_flip_flop(counter);
+	tock();
+	update_flip_flop(counter);
+	TEST_ASSERT_EQUAL_INT(100, get_counter(counter));
+
+	set_counter(counter, 0, 0, 1, 100);
+	tick();
+	update_flip_flop(counter);
+	tock();
+	update_flip_flop(counter);
+	TEST_ASSERT_EQUAL_INT(0, get_counter(counter));
+
+	destroy_counter(counter);
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
@@ -296,6 +318,7 @@ int main(void)
 	RUN_TEST(test_initialize_counter);
 	RUN_TEST(test_set_counter_inc);
 	RUN_TEST(test_set_counter_load);
+	RUN_TEST(test_set_counter_reset);
 
 	return UNITY_END();
 }
