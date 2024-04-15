@@ -27,7 +27,7 @@ void print_flip_flop(flip_flop *ff);
 void set_intermediate_flip_flop(flip_flop *ff, int16_t in);
 void chain_flip_flops(flip_flop *ff0, flip_flop *ff1);
 
-void update_ram_1(flip_flop *ff, int16_t in, int16_t select);
+void update_ram_1(flip_flop *ff, int16_t select, int16_t in);
 void update_ram_x(flip_flop *ram_chips[], uint16_t num_flip_flops, uint16_t address, int16_t select, int16_t in);
 
 #endif

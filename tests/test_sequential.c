@@ -216,10 +216,6 @@ void test_update_ram_x(void)
 		update_flip_flops(ffs, num_flip_flops);
 	}
 
-	for (int i = 0; i < num_flip_flops; i++) {
-		print_flip_flop(ffs[i]);
-	}
-
 	destroy_flip_flops(ffs, num_flip_flops);
 }
 
