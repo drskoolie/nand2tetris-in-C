@@ -228,6 +228,8 @@ void test_initialize_counter(void)
 	flip_flop *counter;
 	counter = initialize_counter();
 
+	TEST_ASSERT_EQUAL_INT(0, get_counter(counter));
+
 	destroy_counter(counter);
 }
 
