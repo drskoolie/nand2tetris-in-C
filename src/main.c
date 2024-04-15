@@ -9,6 +9,7 @@ int main()
 	ff0 = initialize_flip_flop();
 	ff1 = initialize_flip_flop();
 	ff1->in = ff0->out;
+	ff1->in_flag = 0;
 	for (int i = 0; i < 4; i++) {
 
 		*(ff0->in) = 100;
@@ -22,6 +23,6 @@ int main()
 		update_flip_flop(ff1);
 	}
 
-	destroy_flip_flop(ff0, 1, 1);
-	destroy_flip_flop(ff1, 0, 1);
+	destroy_flip_flop(ff0);
+	destroy_flip_flop(ff1);
 }

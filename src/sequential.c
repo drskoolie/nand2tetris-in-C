@@ -26,8 +26,10 @@ flip_flop *initialize_flip_flop() {
 	flip_flop *ff = malloc(sizeof(flip_flop));
 	// Check if ff == NULL;
 	ff->in = malloc(sizeof(int16_t));
+	ff->in_flag = 1;
 	// Check if ff->in == NULL;
 	ff->out = malloc(sizeof(int16_t));
+	ff->out_flag = 1;
 	// Check if ff->out == NULL;
 	*(ff->in) = 0;
 	*(ff->out) = 0;
@@ -36,14 +38,14 @@ flip_flop *initialize_flip_flop() {
 	return ff;
 }
 
-void destroy_flip_flop(flip_flop *ff, bool in_flag, bool out_flag)
+void destroy_flip_flop(flip_flop *ff)
 {
-	if (ff->in != NULL && in_flag) {
+	if (ff->in != NULL && ff->in_flag) {
 		free(ff->in);
 		ff->in = NULL;
 	}
 
-	if (ff->out != NULL && out_flag) {
+	if (ff->out != NULL && ff->out_flag) {
 		free(ff->out);
 		ff->out = NULL;
 	}
