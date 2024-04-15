@@ -23,7 +23,8 @@ bool get_clock() {
 	return clock_state;
 }
 
-flip_flop *initialize_flip_flop() {
+flip_flop *initialize_flip_flop()
+{
 	flip_flop *ff = malloc(sizeof(flip_flop));
 	// Check if ff == NULL;
 	ff->in = malloc(sizeof(int16_t));
@@ -39,6 +40,19 @@ flip_flop *initialize_flip_flop() {
 	return ff;
 }
 
+flip_flop **intialize_flip_flops(uint16_t num_flip_flops)
+{
+	flip_flop **ffs = malloc(num_flip_flops * sizeof(flip_flop *));
+	// Handle memory allocation failure
+
+	for (int i = 0; i < num_flip_flops; i++) {
+		ffs[i] = initialize_flip_flop();
+		// handle memory allocation failure for individuals
+	}
+
+	return ffs;
+}
+
 void destroy_flip_flop(flip_flop *ff)
 {
 	if (ff != NULL) {
@@ -51,6 +65,13 @@ void destroy_flip_flop(flip_flop *ff)
 		}
 
 		free(ff);
+	}
+}
+
+void destroy_flip_flops(flip_flop **ffs, uint16_t num_flip_flops)
+{
+	for (int i = 0; i < num_flip_flops; i++) {
+		destroy_flip_flop(ffs[i]);
 	}
 }
 
@@ -102,3 +123,10 @@ void update_ram_1(flip_flop *ff, int16_t select)
 	}
 }
 
+void update_ram_x(flip_flop *ram_chips[], uint16_t num_chips, uint16_t address, int16_t select)
+{
+
+	// address may be converted to a mux way
+	update_ram_1(ram_chips[address], select);
+
+}
