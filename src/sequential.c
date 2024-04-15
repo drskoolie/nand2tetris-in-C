@@ -36,14 +36,14 @@ flip_flop *initialize_flip_flop() {
 	return ff;
 }
 
-void destroy_flip_flop(flip_flop *ff)
+void destroy_flip_flop(flip_flop *ff, bool in_flag, bool out_flag)
 {
-	if (ff->in != NULL) {
+	if (ff->in != NULL && in_flag) {
 		free(ff->in);
 		ff->in = NULL;
 	}
 
-	if (ff->out != NULL) {
+	if (ff->out != NULL && out_flag) {
 		free(ff->out);
 		ff->out = NULL;
 	}

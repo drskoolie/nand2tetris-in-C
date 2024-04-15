@@ -15,7 +15,7 @@ void tick(void);
 void tock(void);
 bool get_clock(void);
 flip_flop *initialize_flip_flop();
-void destroy_flip_flop(flip_flop *ff);
+void destroy_flip_flop(flip_flop *ff, bool in_flag, bool out_flag);
 void update_flip_flop(flip_flop *ff);
 void print_flip_flop(flip_flop *ff);
 void set_intermediate_flip_flop(flip_flop *ff, int16_t in);
