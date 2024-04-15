@@ -35,5 +35,6 @@ int16_t get_ram_x(flip_flop *ram_chips[], uint16_t num_flip_flops, uint16_t addr
 flip_flop *initialize_counter();
 void update_counter(flip_flop *counter, int16_t inc, int16_t load, int16_t reset, int16_t in);
 int16_t get_counter(flip_flop *counter);
+void destroy_counter(flip_flop *counter);
 
 #endif

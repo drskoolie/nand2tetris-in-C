@@ -181,3 +181,8 @@ int16_t get_counter(flip_flop *counter)
 {
 	return get_ram_1(counter);
 }
+
+void destroy_counter(flip_flop *counter)
+{
+	destroy_flip_flop(counter);
+}

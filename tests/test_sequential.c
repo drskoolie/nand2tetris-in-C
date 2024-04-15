@@ -223,8 +223,12 @@ void test_update_ram_x(void)
 	destroy_flip_flops(ffs, num_flip_flops);
 }
 
-void test_update_counter(void)
+void test_initialize_counter(void)
 {
+	flip_flop *counter;
+	counter = initialize_counter();
+
+	destroy_counter(counter);
 }
 
 int main(void)
@@ -242,6 +246,7 @@ int main(void)
 	RUN_TEST(test_update_ram1_select_1);
 	RUN_TEST(test_initialize_flip_flops);
 	RUN_TEST(test_update_ram_x);
+	RUN_TEST(test_initialize_counter);
 
 	return UNITY_END();
 }
