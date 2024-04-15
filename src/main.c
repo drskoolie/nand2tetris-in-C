@@ -18,6 +18,12 @@ int main()
 		printf("Out: %d\n", *(ff0->out));
 		tick_tock();
 		update_flip_flop(ff0);
+
+		if (i == 3) {
+			set_intermediate_flip_flop(ff0, 10);
+			tock();
+			update_flip_flop(ff0);
+		}
 	}
 
 	destroy_flip_flop(ff0);

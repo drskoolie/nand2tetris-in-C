@@ -11,6 +11,8 @@ typedef struct {
 } flip_flop;
 
 void tick_tock(void);
+void tick(void);
+void tock(void);
 bool get_clock(void);
 flip_flop *initialize_flip_flop();
 void destroy_flip_flop(flip_flop *ff);

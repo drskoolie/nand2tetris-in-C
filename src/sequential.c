@@ -5,6 +5,14 @@
 
 bool clock_state = 0;
 
+void tick() {
+	clock_state = 1;
+}
+
+void tock() {
+	clock_state = 0;
+}
+
 void tick_tock() {
 	clock_state ^= 1; // Toggle clock state (0 becomes 1, 1 becomes 0)
 }
