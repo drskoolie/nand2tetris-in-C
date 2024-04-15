@@ -40,14 +40,17 @@ void destroy_flip_flop(flip_flop *ff)
 {
 	if (ff->in != NULL) {
 		free(ff->in);
+		ff->in = NULL;
 	}
 
 	if (ff->out != NULL) {
 		free(ff->out);
+		ff->out = NULL;
 	}
 
 	if (ff != NULL) {
 		free(ff);
+		ff = NULL;
 	}
 }
 
