@@ -185,6 +185,10 @@ void test_update_ram1_select_1(void)
 	destroy_flip_flop(ff);
 }
 
+void test_initialize_flip_flops(void)
+{
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
