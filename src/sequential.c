@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include "sequential.h"
 
@@ -12,10 +13,21 @@ bool get_clock() {
 	return clock_state;
 }
 
-void initialize_flip_flop(flip_flop *ff, int16_t *input, int16_t *output) {
-    ff->in = input;
-    ff->out = output;
+flip_flop *initialize_flip_flop() {
+	flip_flop *ff = malloc(sizeof(flip_flop));
+	// Check if ff == NULL;
+	*(ff->in) = 0;
+	*(ff->out) = 0;
     ff->intermediate = 0;
+
+	return ff;
+}
+
+void destroy_flip_flop(flip_flop *ff)
+{
+	if (ff != NULL) {
+		free(ff);
+	}
 }
 
 void update_flip_flop(flip_flop *ff) {
