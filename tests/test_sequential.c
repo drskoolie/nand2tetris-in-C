@@ -63,6 +63,7 @@ void test_flip_flop_tick_tock_1(void)
 
 	*ff->in = 1;
 
+	tock();
 	tick_tock();
 	update_flip_flop(ff);
 	TEST_ASSERT_EQUAL_INT(1, *ff->in);
@@ -79,6 +80,7 @@ void test_flip_flop_tick_tock_2(void)
 
 	*ff->in = 1;
 
+	tock();
 	tick_tock();
 	update_flip_flop(ff);
 	tick_tock();
@@ -98,6 +100,7 @@ void test_chain_flip_flops(void)
 	ff0 = initialize_flip_flop();
 	ff1 = initialize_flip_flop();
 
+
 	destroy_flip_flop(ff0);
 	destroy_flip_flop(ff1);
 
@@ -112,6 +115,7 @@ int main(void)
 	RUN_TEST(test_destroy_flip_flop);
 	RUN_TEST(test_flip_flop_tick_tock_0);
 	RUN_TEST(test_flip_flop_tick_tock_1);
+	RUN_TEST(test_flip_flop_tick_tock_2);
 	RUN_TEST(test_chain_flip_flops);
 
 	return UNITY_END();
