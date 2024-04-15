@@ -8,8 +8,7 @@ int main()
 
 	ff0 = initialize_flip_flop();
 	ff1 = initialize_flip_flop();
-	ff1->in = ff0->out;
-	ff1->in_flag = 0;
+	chain_flip_flops(ff0, ff1);
 	for (int i = 0; i < 4; i++) {
 
 		*(ff0->in) = 100;

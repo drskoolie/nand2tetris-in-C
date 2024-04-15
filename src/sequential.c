@@ -80,3 +80,9 @@ void set_intermediate_flip_flop(flip_flop *ff, int16_t intermediate)
 { 
 	ff->intermediate = intermediate;
 }
+
+void chain_flip_flops(flip_flop *ff0, flip_flop *ff1)
+{
+	ff1->in = ff0->out;
+	ff1->in_flag = 0;
+}
