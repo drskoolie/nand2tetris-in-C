@@ -87,14 +87,17 @@ void chain_flip_flops(flip_flop *ff0, flip_flop *ff1)
 	ff1->in_flag = 0;
 }
 
-void ram1(flip_flop *ff, int16_t select)
+void update_ram1(flip_flop *ff, int16_t select)
 {
 	// select = 0 --> out = out(t-1)
 	// select = 1 --> out = in(t-1)
 	int16_t intermediate;
 
+	intermediate = mux(*ff->out, *ff->in, select);
 	if (get_clock() == 1) {
-		intermediate = mux(*ff->out, *ff->in, select);
-		set_intermediate_flip_flop(ff, *ff->in);
+		set_intermediate_flip_flop(ff, intermediate);
+	}
+	else if (get_clock() == 0) {
+		update_flip_flop(ff);
 	}
 }
