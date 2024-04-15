@@ -27,3 +27,8 @@ void update_flip_flop(flip_flop *ff) {
     }
 }
 
+void set_intermediate_flip_flop(flip_flop *ff, int16_t in) { 
+
+	ff->intermediate = in;
+}
+
