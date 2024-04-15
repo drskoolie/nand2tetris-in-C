@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include "sequential.h"
@@ -58,6 +59,16 @@ void update_flip_flop(flip_flop *ff)
     else if (get_clock() == 0) {  // Falling edge: update the output
         *(ff->out) = ff->intermediate;
     }
+}
+
+void print_flip_flop(flip_flop *ff)
+{
+	printf("------------------------------\n");
+	printf("Clock State: %d\n",  get_clock());
+	printf("In: %d\n", *(ff->in));
+	printf("Intermediate: %d\n", ff->intermediate);
+	printf("Out: %d\n", *(ff->out));
+	printf("------------------------------\n\n");
 }
 
 void set_intermediate_flip_flop(flip_flop *ff, int16_t intermediate)
