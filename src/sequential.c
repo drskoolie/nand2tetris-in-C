@@ -115,7 +115,7 @@ void chain_flip_flops(flip_flop *ff0, flip_flop *ff1)
 	ff1->in_flag = 0;
 }
 
-void update_ram_1(flip_flop *ff, int16_t select, int16_t in)
+void set_ram(flip_flop *ff, int16_t select, int16_t in)
 {
 	// select = 0 --> out = out(t-1)
 	// select = 1 --> out = in(t-1)
@@ -131,28 +131,28 @@ void update_ram_1(flip_flop *ff, int16_t select, int16_t in)
 	}
 }
 
-void update_ram_x(flip_flop *ram_chips[], uint16_t num_flip_flops, uint16_t address, int16_t select, int16_t in)
+void set_rams(flip_flop *ram_chips[], uint16_t num_flip_flops, uint16_t address, int16_t select, int16_t in)
 {
 
 	// select = 0 --> out = out(t-1)
 	// select = 1 --> out = in(t-1)
 	if (address < num_flip_flops) {
-		update_ram_1(ram_chips[address], select, in);
+		set_ram(ram_chips[address], select, in);
 	}
 }
 
-int16_t get_ram_1(flip_flop *ff)
+int16_t get_ram(flip_flop *ff)
 {
 	return *ff->out;
 }
 
-int16_t get_ram_x(flip_flop *ram_chips[], uint16_t num_flip_flops, uint16_t address)
+int16_t get_rams(flip_flop *ram_chips[], uint16_t num_flip_flops, uint16_t address)
 {
 	if (address < num_flip_flops) {
 		//
 	}
 
-	return get_ram_1(ram_chips[address]);
+	return get_ram(ram_chips[address]);
 }
 
 flip_flop *initialize_counter()
@@ -160,7 +160,7 @@ flip_flop *initialize_counter()
 	return initialize_flip_flop();
 }
 
-void update_counter(flip_flop *counter, int16_t inc, int16_t load, int16_t reset, int16_t in)
+void set_counter(flip_flop *counter, int16_t inc, int16_t load, int16_t reset, int16_t in)
 {
 	int16_t select = 0;
 
@@ -174,12 +174,12 @@ void update_counter(flip_flop *counter, int16_t inc, int16_t load, int16_t reset
 		in = *counter->out + 1;
 	}
 
-	update_ram_1(counter, select, in);
+	set_ram(counter, select, in);
 }
 
 int16_t get_counter(flip_flop *counter)
 {
-	return get_ram_1(counter);
+	return get_ram(counter);
 }
 
 void destroy_counter(flip_flop *counter)
