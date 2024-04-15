@@ -100,6 +100,30 @@ void test_chain_flip_flops(void)
 	ff0 = initialize_flip_flop();
 	ff1 = initialize_flip_flop();
 
+	tock();
+	chain_flip_flops(ff0, ff1);
+	*ff0->in = 1;
+
+	tick_tock();
+	update_flip_flop(ff0);
+	update_flip_flop(ff1);
+	TEST_ASSERT_EQUAL_INT(0, *ff1->out);
+
+	tick_tock();
+	update_flip_flop(ff0);
+	update_flip_flop(ff1);
+	TEST_ASSERT_EQUAL_INT(0, *ff1->out);
+
+	tick_tock();
+	update_flip_flop(ff0);
+	update_flip_flop(ff1);
+	TEST_ASSERT_EQUAL_INT(0, *ff1->out);
+
+	tick_tock();
+	update_flip_flop(ff0);
+	update_flip_flop(ff1);
+	TEST_ASSERT_EQUAL_INT(1, *ff1->out);
+
 
 	destroy_flip_flop(ff0);
 	destroy_flip_flop(ff1);
