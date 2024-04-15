@@ -141,17 +141,17 @@ void test_update_ram1_select_0(void)
 	*ff->in = 1;
 
 	tock();
-	update_ram_1(ff, 0);
+	update_ram_1(ff, 0, 10);
 	TEST_ASSERT_EQUAL_INT(0, ff->intermediate);
 	TEST_ASSERT_EQUAL_INT(0, *ff->out);
 
 	tick();
-	update_ram_1(ff, 0);
+	update_ram_1(ff, 0, 10);
 	TEST_ASSERT_EQUAL_INT(0, ff->intermediate);
 	TEST_ASSERT_EQUAL_INT(0, *ff->out);
 
 	tock();
-	update_ram_1(ff, 0);
+	update_ram_1(ff, 0, 10);
 	TEST_ASSERT_EQUAL_INT(0, ff->intermediate);
 	TEST_ASSERT_EQUAL_INT(0, *ff->out);
 
@@ -166,22 +166,20 @@ void test_update_ram1_select_1(void)
 
 	ff = initialize_flip_flop();
 
-	*ff->in = 1;
-
 	tock();
-	update_ram_1(ff, 1);
+	update_ram_1(ff, 1, 10);
 	TEST_ASSERT_EQUAL_INT(0, ff->intermediate);
 	TEST_ASSERT_EQUAL_INT(0, *ff->out);
 
 	tick();
-	update_ram_1(ff, 1);
-	TEST_ASSERT_EQUAL_INT(1, ff->intermediate);
+	update_ram_1(ff, 1, 10);
+	TEST_ASSERT_EQUAL_INT(10, ff->intermediate);
 	TEST_ASSERT_EQUAL_INT(0, *ff->out);
 
 	tock();
-	update_ram_1(ff, 1);
-	TEST_ASSERT_EQUAL_INT(1, ff->intermediate);
-	TEST_ASSERT_EQUAL_INT(1, *ff->out);
+	update_ram_1(ff, 1, 10);
+	TEST_ASSERT_EQUAL_INT(10, ff->intermediate);
+	TEST_ASSERT_EQUAL_INT(10, *ff->out);
 	destroy_flip_flop(ff);
 }
 
@@ -205,6 +203,22 @@ void test_update_ram_x(void)
 {
 	uint16_t num_flip_flops = 4;
 	flip_flop **ffs = initialize_flip_flops(num_flip_flops);
+
+	tock();
+	for (int i = 0; i < num_flip_flops; i++) {
+		update_ram_x(ffs, num_flip_flops, i, 1, i*5);
+	}
+
+	for (int i = 0; i < 4; i++){
+		tick();
+		update_flip_flops(ffs, num_flip_flops);
+		tock();
+		update_flip_flops(ffs, num_flip_flops);
+	}
+
+	for (int i = 0; i < num_flip_flops; i++) {
+		print_flip_flop(ffs[i]);
+	}
 
 	destroy_flip_flops(ffs, num_flip_flops);
 }
