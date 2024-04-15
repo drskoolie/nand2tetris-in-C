@@ -149,6 +149,8 @@ int16_t get_ram_1(flip_flop *ff)
 int16_t get_ram_x(flip_flop *ram_chips[], uint16_t num_flip_flops, uint16_t address)
 {
 	if (address < num_flip_flops) {
-		return get_ram_1(ram_chips[address]);
+		//
 	}
+
+	return get_ram_1(ram_chips[address]);
 }
