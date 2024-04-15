@@ -19,11 +19,23 @@ void test_flip_flop_initialize(void)
 	destroy_flip_flop(ff);
 }
 
+void test_destroy_flip_flop(void)
+{
+	flip_flop *ff;
+	ff = initialize_flip_flop();
+	TEST_ASSERT_NOT_NULL(ff);
+	TEST_ASSERT_NOT_NULL(ff->in);
+	TEST_ASSERT_NOT_NULL(ff->out);
+
+	destroy_flip_flop(ff);
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
 
 	RUN_TEST(test_flip_flop_initialize);
+	RUN_TEST(test_destroy_flip_flop);
 
 	return UNITY_END();
 }
