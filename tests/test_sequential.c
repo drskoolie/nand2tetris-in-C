@@ -17,7 +17,7 @@ void test_clock(void)
 	TEST_ASSERT_EQUAL_INT(0, get_clock());
 }
 
-void test_flip_flop_initialize(void)
+void test_initialize_flip_flop(void)
 {
 	flip_flop *ff;
 	ff = initialize_flip_flop();
@@ -130,7 +130,7 @@ void test_chain_flip_flops(void)
 
 }
 
-void test_update_ram1_select_0(void)
+void test_set_ram_select_0(void)
 {
 	// Don't update output
 	//
@@ -158,7 +158,7 @@ void test_update_ram1_select_0(void)
 	destroy_flip_flop(ff);
 }
 
-void test_update_ram1_select_1(void)
+void test_set_ram_select_1(void)
 {
 	// Don't update output
 	//
@@ -199,7 +199,7 @@ void test_initialize_flip_flops(void)
 	destroy_flip_flops(ffs, num_flip_flops);
 }
 
-void test_update_ram_x(void)
+void test_set_rams(void)
 {
 	uint16_t num_flip_flops = 4;
 	flip_flop **ffs = initialize_flip_flops(num_flip_flops);
@@ -261,16 +261,16 @@ int main(void)
 	UNITY_BEGIN();
 
 	RUN_TEST(test_clock);
-	RUN_TEST(test_flip_flop_initialize);
+	RUN_TEST(test_initialize_flip_flop);
 	RUN_TEST(test_destroy_flip_flop);
 	RUN_TEST(test_flip_flop_tick_tock_0);
 	RUN_TEST(test_flip_flop_tick_tock_1);
 	RUN_TEST(test_flip_flop_tick_tock_2);
 	RUN_TEST(test_chain_flip_flops);
-	RUN_TEST(test_update_ram1_select_0);
-	RUN_TEST(test_update_ram1_select_1);
+	RUN_TEST(test_set_ram_select_0);
+	RUN_TEST(test_set_ram_select_1);
 	RUN_TEST(test_initialize_flip_flops);
-	RUN_TEST(test_update_ram_x);
+	RUN_TEST(test_set_rams);
 	RUN_TEST(test_initialize_counter);
 	RUN_TEST(test_update_counter_inc);
 
