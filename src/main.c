@@ -9,7 +9,7 @@ int main()
 	ff0 = initialize_flip_flop();
 	ff1 = initialize_flip_flop();
 	chain_flip_flops(ff0, ff1);
-	for (int i = 0; i < 4; i++) {
+	for (int i = 0; i < 5; i++) {
 
 		*(ff0->in) = 100;
 		printf("FF0\n");
