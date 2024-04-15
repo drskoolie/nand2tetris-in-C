@@ -187,6 +187,8 @@ void test_update_ram1_select_1(void)
 
 void test_initialize_flip_flops(void)
 {
+	uint16_t num_flip_flops = 10;
+	flip_flop **ffs = initialize_flip_flops(num_flip_flops);
 }
 
 int main(void)
@@ -202,6 +204,7 @@ int main(void)
 	RUN_TEST(test_chain_flip_flops);
 	RUN_TEST(test_update_ram1_select_0);
 	RUN_TEST(test_update_ram1_select_1);
+	RUN_TEST(test_initialize_flip_flops);
 
 	return UNITY_END();
 }
