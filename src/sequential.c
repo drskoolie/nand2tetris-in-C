@@ -16,6 +16,10 @@ bool get_clock() {
 flip_flop *initialize_flip_flop() {
 	flip_flop *ff = malloc(sizeof(flip_flop));
 	// Check if ff == NULL;
+	ff->in = malloc(sizeof(int16_t));
+	// Check if ff->in == NULL;
+	ff->out = malloc(sizeof(int16_t));
+	// Check if ff->out == NULL;
 	*(ff->in) = 0;
 	*(ff->out) = 0;
     ff->intermediate = 0;
@@ -25,6 +29,14 @@ flip_flop *initialize_flip_flop() {
 
 void destroy_flip_flop(flip_flop *ff)
 {
+	if (ff->in != NULL) {
+		free(ff->in);
+	}
+
+	if (ff->out != NULL) {
+		free(ff->out);
+	}
+
 	if (ff != NULL) {
 		free(ff);
 	}
