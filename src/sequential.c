@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "sequential.h"
+#include "gates.h"
 
 bool clock_state = 0;
 
@@ -55,10 +56,12 @@ void destroy_flip_flop(flip_flop *ff)
 
 void update_flip_flop(flip_flop *ff)
 {
-    if (get_clock() == 1) {   // Rising edge: capture the current input
+	// Rising edge: capture the current input
+    if (get_clock() == 1) {   
         ff->intermediate = *(ff->in);
     }
-    else if (get_clock() == 0) {  // Falling edge: update the output
+	// Falling edge: update the output
+    else if (get_clock() == 0) {  
         *(ff->out) = ff->intermediate;
     }
 }
@@ -82,4 +85,16 @@ void chain_flip_flops(flip_flop *ff0, flip_flop *ff1)
 {
 	ff1->in = ff0->out;
 	ff1->in_flag = 0;
+}
+
+void ram1(flip_flop *ff, int16_t select)
+{
+	// select = 0 --> out = out(t-1)
+	// select = 1 --> out = in(t-1)
+	int16_t intermediate;
+
+	if (get_clock() == 1) {
+		intermediate = mux(*ff->out, *ff->in, select);
+		set_intermediate_flip_flop(ff, *ff->in);
+	}
 }
