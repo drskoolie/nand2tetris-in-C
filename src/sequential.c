@@ -12,13 +12,13 @@ bool get_clock() {
 	return clock_state;
 }
 
-void initializeFlipFlop(FlipFlop *ff, int16_t *input, int16_t *output) {
+void initialize_flip_flop(flip_flop *ff, int16_t *input, int16_t *output) {
     ff->in = input;
     ff->out = output;
     ff->intermediate = 0;
 }
 
-void updateFlipFlop(FlipFlop *ff) {
+void update_flip_flop(flip_flop *ff) {
     if (clock_state == 1) {   // Rising edge: capture the current input
         ff->intermediate = *(ff->in);
     }

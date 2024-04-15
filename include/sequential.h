@@ -8,10 +8,11 @@ typedef struct {
 	int16_t *in;
 	int16_t intermediate;
 	int16_t *out;
-} FlipFlop;
+} flip_flop;
 
 void tick_tock(void);
 bool get_clock(void);
-int16_t dff(int16_t in);
+void initialize_flip_flop(flip_flop *ff, int16_t *input, int16_t *output);
+void update_flip_flop(flip_flop *ff);
 
 #endif
