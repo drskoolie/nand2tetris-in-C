@@ -43,6 +43,18 @@ void test_destroy_flip_flop(void)
 	destroy_flip_flop(ff);
 }
 
+void test_flip_flop_tick_tock_0(void)
+{
+	flip_flop *ff;
+	ff = initialize_flip_flop();
+
+	*ff->in = 1;
+	TEST_ASSERT_EQUAL_INT(1, *ff->in);
+	TEST_ASSERT_EQUAL_INT(0, ff->intermediate);
+	TEST_ASSERT_EQUAL_INT(0, *ff->out);
+
+	destroy_flip_flop(ff);
+}
 
 void test_chain_flip_flops(void)
 {
@@ -65,6 +77,7 @@ int main(void)
 	RUN_TEST(test_flip_flop_initialize);
 	RUN_TEST(test_destroy_flip_flop);
 	RUN_TEST(test_chain_flip_flops);
+	RUN_TEST(test_flip_flop_tick_tock_0);
 
 	return UNITY_END();
 }
