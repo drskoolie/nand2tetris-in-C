@@ -43,12 +43,10 @@ void destroy_flip_flop(flip_flop *ff)
 	if (ff != NULL) {
 		if (ff->in != NULL && ff->in_flag) {
 			free(ff->in);
-			ff->in_flag = 0;
 		}
 
 		if (ff->out != NULL && ff->out_flag) {
 			free(ff->out);
-			ff->out_flag = 0;
 		}
 
 		free(ff);

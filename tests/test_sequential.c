@@ -21,6 +21,7 @@ void test_flip_flop_initialize(void)
 
 void test_destroy_flip_flop(void)
 {
+	// This isn't really working, don't know how to make it work.
 	flip_flop *ff;
 	ff = initialize_flip_flop();
 	TEST_ASSERT_NOT_NULL(ff);
