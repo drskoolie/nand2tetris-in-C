@@ -186,3 +186,5 @@ void destroy_counter(flip_flop *counter)
 {
 	destroy_flip_flop(counter);
 }
+
+// Change update to set
