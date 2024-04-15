@@ -151,6 +151,32 @@ void test_update_ram1_select_0(void)
 	TEST_ASSERT_EQUAL_INT(0, *ff->out);
 }
 
+void test_update_ram1_select_1(void)
+{
+	// Don't update output
+	//
+	flip_flop *ff;
+
+	ff = initialize_flip_flop();
+
+	*ff->in = 1;
+
+	tock();
+	update_ram1(ff, 1);
+	TEST_ASSERT_EQUAL_INT(0, ff->intermediate);
+	TEST_ASSERT_EQUAL_INT(0, *ff->out);
+
+	tick();
+	update_ram1(ff, 1);
+	TEST_ASSERT_EQUAL_INT(1, ff->intermediate);
+	TEST_ASSERT_EQUAL_INT(0, *ff->out);
+
+	tock();
+	update_ram1(ff, 1);
+	TEST_ASSERT_EQUAL_INT(1, ff->intermediate);
+	TEST_ASSERT_EQUAL_INT(1, *ff->out);
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
@@ -163,6 +189,7 @@ int main(void)
 	RUN_TEST(test_flip_flop_tick_tock_2);
 	RUN_TEST(test_chain_flip_flops);
 	RUN_TEST(test_update_ram1_select_0);
+	RUN_TEST(test_update_ram1_select_1);
 
 	return UNITY_END();
 }
