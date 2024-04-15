@@ -189,6 +189,16 @@ void test_initialize_flip_flops(void)
 {
 	uint16_t num_flip_flops = 10;
 	flip_flop **ffs = initialize_flip_flops(num_flip_flops);
+
+	for (int i = 0; i < num_flip_flops; i++) {
+		TEST_ASSERT_EQUAL_INT(1, ffs[i]->in_flag);
+		TEST_ASSERT_EQUAL_INT(0, *ffs[i]->in);
+		TEST_ASSERT_EQUAL_INT(1, ffs[i]->out_flag);
+		TEST_ASSERT_EQUAL_INT(0, *ffs[i]->out);
+		TEST_ASSERT_EQUAL_INT(0, ffs[i]->intermediate);
+	}
+
+	destroy_flip_flops(ffs, num_flip_flops);
 }
 
 int main(void)

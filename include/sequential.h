@@ -20,7 +20,7 @@ bool get_clock(void);
 flip_flop *initialize_flip_flop();
 flip_flop **initialize_flip_flops(uint16_t num_flip_flops);
 void destroy_flip_flop(flip_flop *ff);
-void destroy_flip_flips(flip_flop **ffs, uint16_t num_flip_flops);
+void destroy_flip_flops(flip_flop **ffs, uint16_t num_flip_flops);
 void update_flip_flop(flip_flop *ff);
 void update_flip_flops(flip_flop **ffs, uint16_t num_flip_flops);
 void print_flip_flop(flip_flop *ff);
