@@ -26,12 +26,17 @@
     },
     {
         "directory": "/home/drskoolie/github/nand2tetris/",
+        "command": "gcc -Iinclude -c src/von_neumann.c -o obj/von_neumann.o",
+        "file": "src/von_neumann.c"
+    },
+    {
+        "directory": "/home/drskoolie/github/nand2tetris/",
         "command": "gcc -Iinclude -c src/main.c -o obj/main.o",
         "file": "src/main.c"
     },
     {
         "directory": "/home/drskoolie/github/nand2tetris/",
-        "command": "gcc -Iinclude -Iunity -c src/test_sequential.c -o obj/test_sequential.o",
-        "file": "src/test_sequential.c"
+        "command": "gcc -Iinclude -Iunity -c src/test_von_neumann.c -o obj/test_von_neumann.o",
+        "file": "src/test_von_neumann.c"
     }
 ]
