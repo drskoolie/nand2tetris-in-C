@@ -5,6 +5,18 @@ void setUp(void) {}
 
 void tearDown(void) {}
 
+void test_clock(void)
+{
+	tick();
+	TEST_ASSERT_EQUAL_INT(1, get_clock());
+	tock();
+	TEST_ASSERT_EQUAL_INT(0, get_clock());
+	tick_tock();
+	TEST_ASSERT_EQUAL_INT(1, get_clock());
+	tick_tock();
+	TEST_ASSERT_EQUAL_INT(0, get_clock());
+}
+
 void test_flip_flop_initialize(void)
 {
 	flip_flop *ff;
@@ -31,25 +43,28 @@ void test_destroy_flip_flop(void)
 	destroy_flip_flop(ff);
 }
 
-void test_clock(void)
+
+void test_chain_flip_flops(void)
 {
-	tick();
-	TEST_ASSERT_EQUAL_INT(1, get_clock());
-	tock();
-	TEST_ASSERT_EQUAL_INT(0, get_clock());
-	tick_tock();
-	TEST_ASSERT_EQUAL_INT(1, get_clock());
-	tick_tock();
-	TEST_ASSERT_EQUAL_INT(0, get_clock());
+	flip_flop *ff0;
+	flip_flop *ff1;
+
+	ff0 = initialize_flip_flop();
+	ff1 = initialize_flip_flop();
+
+	destroy_flip_flop(ff0);
+	destroy_flip_flop(ff1);
+
 }
 
 int main(void)
 {
 	UNITY_BEGIN();
 
+	RUN_TEST(test_clock);
 	RUN_TEST(test_flip_flop_initialize);
 	RUN_TEST(test_destroy_flip_flop);
-	RUN_TEST(test_clock);
+	RUN_TEST(test_chain_flip_flops);
 
 	return UNITY_END();
 }
