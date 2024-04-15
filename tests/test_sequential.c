@@ -209,11 +209,15 @@ void test_update_ram_x(void)
 		update_ram_x(ffs, num_flip_flops, i, 1, i*5);
 	}
 
-	for (int i = 0; i < 4; i++){
+	for (int i = 0; i < 4; i++) {
 		tick();
 		update_flip_flops(ffs, num_flip_flops);
 		tock();
 		update_flip_flops(ffs, num_flip_flops);
+	}
+
+	for (int i = 0; i < num_flip_flops; i++) {
+		TEST_ASSERT_EQUAL_INT(i*5, *ffs[i]->out);
 	}
 
 	destroy_flip_flops(ffs, num_flip_flops);

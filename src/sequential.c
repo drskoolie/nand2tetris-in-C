@@ -138,6 +138,6 @@ void update_ram_x(flip_flop *ram_chips[], uint16_t num_flip_flops, uint16_t addr
 	// select = 1 --> out = in(t-1)
 	if (address < num_flip_flops) {
 		// address may be converted to a mux way
-		update_ram_1(ram_chips[address], in, select);
+		update_ram_1(ram_chips[address], select, in);
 	}
 }
