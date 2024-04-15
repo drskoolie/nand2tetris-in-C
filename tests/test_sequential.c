@@ -31,12 +31,25 @@ void test_destroy_flip_flop(void)
 	destroy_flip_flop(ff);
 }
 
+void test_clock(void)
+{
+	tick();
+	TEST_ASSERT_EQUAL_INT(1, get_clock());
+	tock();
+	TEST_ASSERT_EQUAL_INT(0, get_clock());
+	tick_tock();
+	TEST_ASSERT_EQUAL_INT(1, get_clock());
+	tick_tock();
+	TEST_ASSERT_EQUAL_INT(0, get_clock());
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
 
 	RUN_TEST(test_flip_flop_initialize);
 	RUN_TEST(test_destroy_flip_flop);
+	RUN_TEST(test_clock);
 
 	return UNITY_END();
 }
