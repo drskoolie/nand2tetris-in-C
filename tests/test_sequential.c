@@ -223,6 +223,10 @@ void test_update_ram_x(void)
 	destroy_flip_flops(ffs, num_flip_flops);
 }
 
+void test_update_counter(void)
+{
+}
+
 int main(void)
 {
 	UNITY_BEGIN();

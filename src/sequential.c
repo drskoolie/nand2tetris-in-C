@@ -155,6 +155,11 @@ int16_t get_ram_x(flip_flop *ram_chips[], uint16_t num_flip_flops, uint16_t addr
 	return get_ram_1(ram_chips[address]);
 }
 
+flip_flop *initialize_counter()
+{
+	return initialize_flip_flop();
+}
+
 void update_counter(flip_flop *counter, int16_t inc, int16_t load, int16_t reset, int16_t in)
 {
 	int16_t select = 0;
@@ -170,4 +175,9 @@ void update_counter(flip_flop *counter, int16_t inc, int16_t load, int16_t reset
 	}
 
 	update_ram_1(counter, select, in);
+}
+
+int16_t get_counter(flip_flop *counter)
+{
+	return get_ram_1(counter);
 }
