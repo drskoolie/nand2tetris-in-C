@@ -46,7 +46,9 @@ void test_initialize_registers()
 
 	initialize_registers(&regs);
 
-	destroy_memory(&reg);
+	TEST_ASSERT_EQUAL_INT(0, regs.A->data);
+
+	destroy_registers(&regs);
 }
 
 int main(void)

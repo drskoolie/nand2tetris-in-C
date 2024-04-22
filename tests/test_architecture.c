@@ -1,5 +1,5 @@
 #include "unity.h"
-#include "von_neumann.h"
+#include "architecture.h"
 
 void setUp(void) {}
 

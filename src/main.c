@@ -4,11 +4,11 @@
 
 int main()
 {
-	memory_t reg_a;
+	registers_t regs;
 
-	initialize_memory(&reg_a, 1);
+	initialize_registers(&regs);
 
-	print_binary(get_memory(&reg_a, 0));
+	print_binary(regs.A->data[0]);
 
-	destroy_memory(&reg_a);
+	destroy_registers(&regs);
 }
