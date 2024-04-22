@@ -48,7 +48,6 @@ void test_initialize_registers()
 
 	TEST_ASSERT_EQUAL_INT(0, get_register_A(&regs));
 	TEST_ASSERT_EQUAL_INT(0, get_register_D(&regs));
-	TEST_ASSERT_EQUAL_INT(0, get_register_M(&regs));
 	TEST_ASSERT_EQUAL_INT(0, get_register_PC(&regs));
 
 	destroy_registers(&regs);
@@ -76,6 +75,18 @@ void test_set_register_D()
 	destroy_registers(&regs);
 }
 
+void test_set_register_PC()
+{
+	registers_t regs;
+
+	initialize_registers(&regs);
+	set_register_PC(&regs, 55);
+	TEST_ASSERT_EQUAL_INT(55, get_register_PC(&regs));
+
+	destroy_registers(&regs);
+}
+
+
 int main(void)
 {
 	UNITY_BEGIN();
@@ -86,6 +97,7 @@ int main(void)
 	RUN_TEST(test_initialize_registers);
 	RUN_TEST(test_set_register_A);
 	RUN_TEST(test_set_register_D);
+	RUN_TEST(test_set_register_PC);
 
 	return UNITY_END();
 }

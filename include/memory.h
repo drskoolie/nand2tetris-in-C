@@ -24,11 +24,9 @@ void initialize_registers(registers_t *regs);
 void destroy_registers(registers_t *regs);
 void set_register_A(registers_t *regs, int16_t value);
 void set_register_D(registers_t *regs, int16_t value);
-void set_register_M(registers_t *regs, int16_t value);
 void set_register_PC(registers_t *regs, int16_t value);
 int16_t get_register_A(registers_t *regs);
 int16_t get_register_D(registers_t *regs);
-int16_t get_register_M(registers_t *regs);
 int16_t get_register_PC(registers_t *regs);
 
 #endif
