@@ -2,17 +2,8 @@
 #include "arithmetic.h"
 #include "memory.h"
 
-void cpu(
-		int16_t instruction_bits,
-		int16_t reset,
-		memory_t *ram,
-		memory_t *reg_a,
-		memory_t *reg_b,
-		memory_t *reg_m,
-		memory_t *program_counter
-)
+void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *regs)
 {
-
 	// Instruction Capturing
 	int16_t type_of_instruction;
 	int16_t mnem_instruction; // Mnemonic Instruction bit
@@ -29,12 +20,12 @@ void cpu(
 	dest_instruction = (instruction_bits & 0b0000000000111000) >> 3;
 	jump_instruction = instruction_bits & 0b0000000000000111;
 
-	/*
 	//Address Instruction (sets A register)
 	if (type_of_instruction == 0) {
-		set_memory(reg_a, 1, instruction_bits);
+		set_register_A(regs, instruction_bits);
 	}
 
+	/*
 	//Compute Instruction
 	else if (type_of_instruction == 1) {
 		if (mnem_instruction == 1) {
