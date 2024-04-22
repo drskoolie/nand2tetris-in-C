@@ -9,10 +9,10 @@ typedef struct {
 } memory_t ; 
 
 typedef struct {
-	memory_t *A;
-	memory_t *D;
-	memory_t *M;
-	memory_t *PC;
+	memory_t A;
+	memory_t D;
+	memory_t M;
+	memory_t PC;
 } registers_t ;
 
 void initialize_memory(memory_t *mem, int16_t size);

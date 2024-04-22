@@ -8,7 +8,7 @@ int main()
 
 	initialize_registers(&regs);
 
-	print_binary(regs.A->data[0]);
+	print_binary(regs.A.data[0]);
 
 	destroy_registers(&regs);
 }

@@ -46,16 +46,16 @@ int16_t get_memory(memory_t *mem, uint16_t address)
 
 void initialize_registers(registers_t *regs)
 {
-	initialize_memory(regs->A, 1);
-	initialize_memory(regs->D, 1);
-	initialize_memory(regs->M, 1);
-	initialize_memory(regs->PC, 1);
+	initialize_memory(&regs->A, 1);
+	initialize_memory(&regs->D, 1);
+	initialize_memory(&regs->M, 1);
+	initialize_memory(&regs->PC, 1);
 }
 
 void destroy_registers(registers_t *regs)
 {
-	destroy_memory(regs->A);
-	destroy_memory(regs->D);
-	destroy_memory(regs->M);
-	destroy_memory(regs->PC);
+	destroy_memory(&regs->A);
+	destroy_memory(&regs->D);
+	destroy_memory(&regs->M);
+	destroy_memory(&regs->PC);
 }
