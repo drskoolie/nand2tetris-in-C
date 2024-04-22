@@ -21,6 +21,7 @@ void cpu(int16_t inM, int16_t instruction_bits, int16_t reset, flip_flop *reg_a)
 	dest_instruction = (instruction_bits & 0b0000000000111000) >> 3;
 	jump_instruction = instruction_bits & 0b0000000000000111;
 
+	/*
 	//Address Instruction (sets A register)
 	if (type_of_instruction == 0) {
 		set_ram(reg_a, 1, instruction_bits);
@@ -32,7 +33,8 @@ void cpu(int16_t inM, int16_t instruction_bits, int16_t reset, flip_flop *reg_a)
 			x_alu = get_ram(reg_a);
 		}
 		else if (mnem_instruction == 0){
-			x_alu = get_ram(reg_m);
+			x_alu = get_ram(reg_a);
 		}
 	}
+	*/
 }

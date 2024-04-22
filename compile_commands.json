@@ -1,13 +1,13 @@
 [
     {
         "directory": "/home/drskoolie/github/nand2tetris/",
-        "command": "gcc -Iinclude -c src/arithmetic.c -o obj/arithmetic.o",
-        "file": "src/arithmetic.c"
+        "command": "gcc -Iinclude -c src/von_neumann.c -o obj/von_neumann.o",
+        "file": "src/von_neumann.c"
     },
     {
         "directory": "/home/drskoolie/github/nand2tetris/",
-        "command": "gcc -Iinclude -c src/sequential.c -o obj/sequential.o",
-        "file": "src/sequential.c"
+        "command": "gcc -Iinclude -c src/main.c -o obj/main.o",
+        "file": "src/main.c"
     },
     {
         "directory": "/home/drskoolie/github/nand2tetris/",
@@ -26,13 +26,13 @@
     },
     {
         "directory": "/home/drskoolie/github/nand2tetris/",
-        "command": "gcc -Iinclude -c src/von_neumann.c -o obj/von_neumann.o",
-        "file": "src/von_neumann.c"
+        "command": "gcc -Iinclude -c src/arithmetic.c -o obj/arithmetic.o",
+        "file": "src/arithmetic.c"
     },
     {
         "directory": "/home/drskoolie/github/nand2tetris/",
-        "command": "gcc -Iinclude -c src/main.c -o obj/main.o",
-        "file": "src/main.c"
+        "command": "gcc -Iinclude -c src/memory.c -o obj/memory.o",
+        "file": "src/memory.c"
     },
     {
         "directory": "/home/drskoolie/github/nand2tetris/",
