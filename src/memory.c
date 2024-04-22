@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include "memory.h"
 
-void initialize_memory(memory *mem, int16_t size)
+void initialize_memory(memory_t *mem, int16_t size)
 {
 	mem->size = size;
 	mem->data = (int16_t *)calloc(size, sizeof(int16_t));
@@ -14,7 +14,7 @@ void initialize_memory(memory *mem, int16_t size)
 	}
 }
 
-void destroy_memory(memory *mem)
+void destroy_memory(memory_t *mem)
 {
 	if (mem->data != NULL) {
 		free(mem->data);
@@ -22,7 +22,7 @@ void destroy_memory(memory *mem)
 	}
 }
 
-void set_memory(memory *mem, uint16_t address, int16_t value)
+void set_memory(memory_t *mem, uint16_t address, int16_t value)
 {
 	if (address < mem->size) {
 		mem->data[address] = value;
@@ -33,7 +33,7 @@ void set_memory(memory *mem, uint16_t address, int16_t value)
 	}
 }
 
-int16_t get_memory(memory *mem, uint16_t address)
+int16_t get_memory(memory_t *mem, uint16_t address)
 {
 	if (address < mem->size) {
 		return mem->data[address];
@@ -44,17 +44,10 @@ int16_t get_memory(memory *mem, uint16_t address)
 	}
 }
 
-void initialize_register(memory *reg)
+void initialize_registers(registers_t *regs)
 {
-	initialize_memory(reg, 1);
-}
-
-void set_register(memory *reg, int16_t value)
-{
-	set_memory(reg, 0, value);
-}
-
-int16_t get_register(memory *reg)
-{
-	return get_memory(reg, 0);
+	initialize_memory(regs->a, 1);
+	initialize_memory(regs->d, 1);
+	initialize_memory(regs->m, 1);
+	initialize_memory(regs->pc, 1);
 }
