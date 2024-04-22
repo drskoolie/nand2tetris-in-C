@@ -40,6 +40,31 @@ void test_destroy_memory()
 
 }
 
+void test_initialize_register()
+{
+	memory reg;
+
+	initialize_register(&reg);
+
+	TEST_ASSERT_EQUAL_INT(1, reg.size);
+
+	destroy_memory(&reg);
+}
+
+void test_set_register()
+{
+
+	memory reg;
+
+	initialize_register(&reg);
+
+	TEST_ASSERT_EQUAL_INT(0, get_register(&reg));
+	set_register(&reg, -10);
+	TEST_ASSERT_EQUAL_INT(-10, get_register(&reg));
+
+	destroy_memory(&reg);
+}
+
 
 int main(void)
 {
@@ -48,6 +73,8 @@ int main(void)
 	RUN_TEST(test_initialize_memory);
 	RUN_TEST(test_set_memory);
 	RUN_TEST(test_destroy_memory);
+	RUN_TEST(test_initialize_register);
+	RUN_TEST(test_set_register);
 
 	return UNITY_END();
 }
