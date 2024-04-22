@@ -65,6 +65,17 @@ void test_set_register_A()
 	destroy_registers(&regs);
 }
 
+void test_set_register_D()
+{
+	registers_t regs;
+
+	initialize_registers(&regs);
+	set_register_D(&regs, -100);
+	TEST_ASSERT_EQUAL_INT(-100, get_register_D(&regs));
+
+	destroy_registers(&regs);
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
@@ -74,6 +85,7 @@ int main(void)
 	RUN_TEST(test_destroy_memory);
 	RUN_TEST(test_initialize_registers);
 	RUN_TEST(test_set_register_A);
+	RUN_TEST(test_set_register_D);
 
 	return UNITY_END();
 }

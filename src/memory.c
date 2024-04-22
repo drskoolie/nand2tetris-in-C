@@ -87,15 +87,15 @@ int16_t get_register_A(registers_t *regs)
 
 int16_t get_register_D(registers_t *regs)
 {
-	return get_memory(&regs->A, 0);
+	return get_memory(&regs->D, 0);
 }
 
 int16_t get_register_M(registers_t *regs)
 {
-	return get_memory(&regs->A, 0);
+	return get_memory(&regs->M, 0);
 }
 
 int16_t get_register_PC(registers_t *regs)
 {
-	return get_memory(&regs->A, 0);
+	return get_memory(&regs->PC, 0);
 }
