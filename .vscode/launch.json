@@ -1,12 +1,21 @@
 {
-	version: 0.2.0,
-	configurations : [
-		{
-		name: Launch file,
-		type: cppdbg,
-		request: launch,
-		program: "/bin/nand",
-		cwd: ${workspaceFolder}
-		}
-	]
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/a.out",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                { "description": "Enable pretty-printing for gdb", "text": "-enable-pretty-printing", "ignoreFailures": true }
+            ],
+            "miDebuggerPath": "/usr/bin/gdb"  // Path to GDB on your system
+        }
+    ]
 }
