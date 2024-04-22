@@ -62,40 +62,40 @@ void destroy_registers(registers_t *regs)
 
 void set_register_A(registers_t *regs, int16_t value)
 {
-	set_memory(&regs->A, 1, value);
+	set_memory(&regs->A, 0, value);
 }
 
 void set_register_D(registers_t *regs, int16_t value)
 {
-	set_memory(&regs->D, 1, value);
+	set_memory(&regs->D, 0, value);
 }
 
 void set_register_M(registers_t *regs, int16_t value)
 {
-	set_memory(&regs->M, 1, value);
+	set_memory(&regs->M, 0, value);
 }
 
 void set_register_PC(registers_t *regs, int16_t value)
 {
-	set_memory(&regs->PC, 1, value);
+	set_memory(&regs->PC, 0, value);
 }
 
 int16_t get_register_A(registers_t *regs)
 {
-	return get_memory(&regs->A, 1);
+	return get_memory(&regs->A, 0);
 }
 
 int16_t get_register_D(registers_t *regs)
 {
-	return get_memory(&regs->A, 1);
+	return get_memory(&regs->A, 0);
 }
 
 int16_t get_register_M(registers_t *regs)
 {
-	return get_memory(&regs->A, 1);
+	return get_memory(&regs->A, 0);
 }
 
 int16_t get_register_PC(registers_t *regs)
 {
-	return get_memory(&regs->A, 1);
+	return get_memory(&regs->A, 0);
 }

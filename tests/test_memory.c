@@ -46,7 +46,17 @@ void test_initialize_registers()
 
 	initialize_registers(&regs);
 
-	TEST_ASSERT_EQUAL_INT(0, regs.A->data);
+	TEST_ASSERT_EQUAL_INT(0, get_register_A(&regs));
+
+	destroy_registers(&regs);
+}
+
+void test_set_register_A()
+{
+	registers_t regs;
+
+	initialize_registers(&regs);
+
 
 	destroy_registers(&regs);
 }
