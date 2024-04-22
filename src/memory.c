@@ -14,6 +14,14 @@ void initialize_memory(memory *mem, int16_t size)
 	}
 }
 
+void destroy_memory(memory *mem)
+{
+	if (mem->data != NULL) {
+		free(mem->data);
+		mem->data = NULL;
+	}
+}
+
 void set_memory(memory *mem, uint16_t address, int16_t value)
 {
 	if (address < mem->size) {
@@ -36,11 +44,17 @@ int16_t get_memory(memory *mem, uint16_t address)
 	}
 }
 
-
-void destroy_memory(memory *mem)
+void initialize_register(memory *reg)
 {
-	if (mem->data != NULL) {
-		free(mem->data);
-		mem->data = NULL;
-	}
+	initialize_memory(reg, 1);
+}
+
+void set_register(memory *reg, int16_t value)
+{
+	set_memory(reg, 0, value);
+}
+
+int16_t get_register(memory *reg)
+{
+	return get_memory(reg, 0);
 }

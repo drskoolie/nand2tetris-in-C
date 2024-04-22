@@ -13,5 +13,8 @@ void destroy_memory(memory *mem);
 void set_memory(memory *mem, uint16_t address, int16_t value);
 int16_t get_memory(memory *mem, uint16_t address);
 
+void initialize_register(memory *reg);
+void set_register(memory *reg, int16_t value);
+int16_t get_register(memory *reg);
 
 #endif

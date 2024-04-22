@@ -1,8 +1,8 @@
 #include "von_neumann.h"
 #include "arithmetic.h"
-#include "sequential.h"
+#include "memory.h"
 
-void cpu(int16_t inM, int16_t instruction_bits, int16_t reset, flip_flop *reg_a)
+void cpu(int16_t inM, int16_t instruction_bits, int16_t reset, memory *ram, memory *reg_a, memory *reg_b, memory *program_counter)
 {
 
 	// Instruction Capturing
@@ -24,7 +24,7 @@ void cpu(int16_t inM, int16_t instruction_bits, int16_t reset, flip_flop *reg_a)
 	/*
 	//Address Instruction (sets A register)
 	if (type_of_instruction == 0) {
-		set_ram(reg_a, 1, instruction_bits);
+		set_memory(reg_a, 1, instruction_bits);
 	}
 
 	//Compute Instruction
