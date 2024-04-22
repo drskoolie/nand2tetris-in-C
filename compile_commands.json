@@ -36,6 +36,11 @@
     },
     {
         "directory": "/home/drskoolie/github/nand2tetris/",
+        "command": "gcc -Iinclude -Iunity -c src/test_memory.c -o obj/test_memory.o",
+        "file": "src/test_memory.c"
+    },
+    {
+        "directory": "/home/drskoolie/github/nand2tetris/",
         "command": "gcc -Iinclude -Iunity -c src/test_von_neumann.c -o obj/test_von_neumann.o",
         "file": "src/test_von_neumann.c"
     }
