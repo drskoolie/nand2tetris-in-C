@@ -41,7 +41,7 @@
     },
     {
         "directory": "/home/drskoolie/github/nand2tetris/",
-        "command": "gcc -Iinclude -Iunity -c src/test_von_neumann.c -o obj/test_von_neumann.o",
-        "file": "src/test_von_neumann.c"
+        "command": "gcc -Iinclude -Iunity -c src/test_architecture.c -o obj/test_architecture.o",
+        "file": "src/test_architecture.c"
     }
 ]
