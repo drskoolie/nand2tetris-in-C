@@ -1,5 +1,5 @@
-#ifndef VON_NEUMANN_H
-#define VON_NEUMANN_H
+#ifndef ARCHITECTURE_H
+#define ARCHITECTURE_H
 
 #include <stdint.h>
 #include "memory.h"

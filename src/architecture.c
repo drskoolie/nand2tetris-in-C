@@ -1,4 +1,4 @@
-#include "von_neumann.h"
+#include "architecture.h"
 #include "arithmetic.h"
 #include "memory.h"
 

@@ -1,8 +1,8 @@
 [
     {
         "directory": "/home/drskoolie/github/nand2tetris/",
-        "command": "gcc -Iinclude -c src/von_neumann.c -o obj/von_neumann.o",
-        "file": "src/von_neumann.c"
+        "command": "gcc -Iinclude -c src/architecture.c -o obj/architecture.o",
+        "file": "src/architecture.c"
     },
     {
         "directory": "/home/drskoolie/github/nand2tetris/",
