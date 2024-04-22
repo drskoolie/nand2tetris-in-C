@@ -59,3 +59,20 @@ void destroy_registers(registers_t *regs)
 	destroy_memory(&regs->M);
 	destroy_memory(&regs->PC);
 }
+
+void set_register_A(registers_t *regs, int16_t value)
+{
+	set_memory(&regs->A, 1, value);
+}
+void set_register_D(registers_t *regs, int16_t value)
+{
+	set_memory(&regs->D, 1, value);
+}
+void set_register_M(registers_t *regs, int16_t value)
+{
+	set_memory(&regs->M, 1, value);
+}
+void set_register_PC(registers_t *regs, int16_t value)
+{
+	set_memory(&regs->PC, 1, value);
+}

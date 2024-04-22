@@ -22,5 +22,9 @@ int16_t get_memory(memory_t *mem, uint16_t address);
 
 void initialize_registers(registers_t *regs);
 void destroy_registers(registers_t *regs);
+void set_register_A(registers_t *regs, int16_t value);
+void set_register_D(registers_t *regs, int16_t value);
+void set_register_M(registers_t *regs, int16_t value);
+void set_register_PC(registers_t *regs, int16_t value);
 
 #endif
