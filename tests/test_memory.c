@@ -131,6 +131,8 @@ void test_inc_register_PC(void)
 	initialize_registers(&regs);
 
 	TEST_ASSERT_EQUAL_INT(0, get_register_PC(&regs));
+	inc_register_PC(&regs);
+	TEST_ASSERT_EQUAL_INT(1, get_register_PC(&regs));
 
 	destroy_registers(&regs);
 
