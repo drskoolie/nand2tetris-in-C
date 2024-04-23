@@ -218,11 +218,32 @@ void test_cpu_mnem1_dest111(void)
 	destroy_registers(&regs);
 }
 
+void test_cpu_jump000(void)
+{
+	int16_t instruction_bits;
+	instruction_bits = set_instruction_bits(0b1, 0b0, 0b111111, 0b100, 0b000);
+
+	memory_t ram;
+	registers_t regs;
+
+	initialize_memory(&ram, 256);
+	initialize_registers(&regs);
+
+	cpu(instruction_bits, 0, &ram, &regs);
+	cpu(instruction_bits, 0, &ram, &regs);
+
+	TEST_ASSERT_EQUAL_INT(2, get_register_PC(&regs));
+
+	destroy_memory(&ram);
+	destroy_registers(&regs);
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
 
 	RUN_TEST(test_cpu_address_instruction);
+
 	RUN_TEST(test_cpu_mnem0_dest000);
 	RUN_TEST(test_cpu_mnem0_dest001);
 	RUN_TEST(test_cpu_mnem0_dest010);
@@ -232,6 +253,8 @@ int main(void)
 	RUN_TEST(test_cpu_mnem0_dest110);
 	RUN_TEST(test_cpu_mnem0_dest111);
 	RUN_TEST(test_cpu_mnem1_dest111);
+
+	RUN_TEST(test_cpu_jump000);
 
 	return UNITY_END();
 }
