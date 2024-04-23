@@ -399,6 +399,43 @@ void test_cpu_jump100(void)
 	destroy_registers(&regs);
 }
 
+void test_cpu_jump101(void)
+{
+	// Jump if output of ALU is != 0 (JNE)
+	int16_t instruction_bits;
+	int16_t value = 23;
+
+	memory_t ram;
+	registers_t regs;
+
+	initialize_memory(&ram, 256);
+	initialize_registers(&regs);
+
+	// Set A register to value
+	instruction_bits = value;
+	cpu(instruction_bits, 0, &ram, &regs);
+	TEST_ASSERT_EQUAL_INT(1, get_register_PC(&regs));
+
+	// Output of ALU is +0, thus no jump
+	instruction_bits = set_instruction_bits(0b1, 0b0, 0b101010, 0b000, 0b101);
+	cpu(instruction_bits, 0, &ram, &regs);
+	TEST_ASSERT_EQUAL_INT(2, get_register_PC(&regs));
+
+	// Output of ALU is +1, thus yes jump
+	instruction_bits = set_instruction_bits(0b1, 0b0, 0b111111, 0b000, 0b101);
+	cpu(instruction_bits, 0, &ram, &regs);
+	TEST_ASSERT_EQUAL_INT(value, get_register_PC(&regs));
+
+	// Output of ALU is -1, thus yes jump
+	instruction_bits = set_instruction_bits(0b1, 0b0, 0b111010, 0b000, 0b101);
+	cpu(instruction_bits, 0, &ram, &regs);
+	TEST_ASSERT_EQUAL_INT(value, get_register_PC(&regs));
+
+	destroy_memory(&ram);
+	destroy_registers(&regs);
+}
+
+
 int main(void)
 {
 	UNITY_BEGIN();
@@ -420,6 +457,7 @@ int main(void)
 	RUN_TEST(test_cpu_jump010);
 	RUN_TEST(test_cpu_jump011);
 	RUN_TEST(test_cpu_jump100);
+	RUN_TEST(test_cpu_jump101);
 
 	return UNITY_END();
 }
