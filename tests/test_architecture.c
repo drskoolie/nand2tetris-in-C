@@ -170,6 +170,54 @@ void test_cpu_mnem0_dest110(void)
 	destroy_registers(&regs);
 }
 
+void test_cpu_mnem0_dest111(void)
+{
+	memory_t ram;
+	registers_t regs;
+	int16_t instruction_bits;
+
+	instruction_bits = set_instruction_bits(0b1, 0b0, 0b111111, 0b111, 0b0);
+
+	initialize_memory(&ram, 128);
+	initialize_registers(&regs);
+
+	cpu(instruction_bits, 0, &ram, &regs);
+
+	TEST_ASSERT_EQUAL_INT(1, get_register_A(&regs));
+	TEST_ASSERT_EQUAL_INT(1, get_register_D(&regs));
+	TEST_ASSERT_EQUAL_INT(1, get_memory(&ram, 0));
+
+	destroy_memory(&ram);
+	destroy_registers(&regs);
+}
+
+void test_cpu_mnem1_dest111(void)
+{
+	memory_t ram;
+	registers_t regs;
+	int16_t instruction_bits;
+
+	int16_t address = 10;
+	int16_t value = 50;
+
+	instruction_bits = set_instruction_bits(0b1, 0b1, 0b110111, 0b111, 0b0);
+
+	initialize_memory(&ram, 128);
+	initialize_registers(&regs);
+
+	set_memory(&ram, address, value);
+	set_register_A(&regs, address);
+
+	cpu(instruction_bits, 0, &ram, &regs);
+
+	TEST_ASSERT_EQUAL_INT(value + 1, get_register_A(&regs));
+	TEST_ASSERT_EQUAL_INT(value + 1, get_register_D(&regs));
+	TEST_ASSERT_EQUAL_INT(value + 1, get_memory(&ram, address));
+
+	destroy_memory(&ram);
+	destroy_registers(&regs);
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
@@ -182,6 +230,8 @@ int main(void)
 	RUN_TEST(test_cpu_mnem0_dest100);
 	RUN_TEST(test_cpu_mnem0_dest101);
 	RUN_TEST(test_cpu_mnem0_dest110);
+	RUN_TEST(test_cpu_mnem0_dest111);
+	RUN_TEST(test_cpu_mnem1_dest111);
 
 	return UNITY_END();
 }
