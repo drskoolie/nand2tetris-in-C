@@ -1,5 +1,7 @@
+#include <stdio.h>
 #include "architecture.h"
 #include "arithmetic.h"
+#include "binary.h"
 #include "memory.h"
 
 // TODO
@@ -38,7 +40,7 @@ void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *re
 	int16_t zr_alu;
 	int16_t ng_alu;
 
-	type_of_instruction = instruction_bits >> 15;
+	type_of_instruction = (instruction_bits >> 15) & 0b1;
 	mnem_instruction = (instruction_bits & 0b0001000000000000) >> 12;
 	comp_instruction = (instruction_bits & 0b0000111111000000) >> 6;
 	dest_instruction = (instruction_bits & 0b0000000000111000) >> 3;

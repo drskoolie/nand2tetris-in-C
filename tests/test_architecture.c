@@ -1,4 +1,5 @@
 #include "unity.h"
+#include "binary.h"
 #include "architecture.h"
 
 void setUp(void) {}
@@ -25,11 +26,16 @@ void test_cpu_mnem0_dest001(void)
 {
 	memory_t ram;
 	registers_t regs;
+	int16_t instruction_bits;
+
+	instruction_bits = set_instruction_bits(0b1, 0b0, 0b111111, 0b001, 0b0);
 
 	initialize_memory(&ram, 128);
 	initialize_registers(&regs);
 
-	TEST_ASSERT_EQUAL_INT(1, 1);
+	cpu(instruction_bits, 0, &ram, &regs);
+
+	TEST_ASSERT_EQUAL_INT(1, get_memory(&ram, 0));
 
 	destroy_memory(&ram);
 	destroy_registers(&regs);
