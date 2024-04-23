@@ -241,6 +241,7 @@ void test_cpu_jump000(void)
 void test_cpu_jump001(void)
 {
 	int16_t instruction_bits;
+	int16_t value = 23;
 
 	memory_t ram;
 	registers_t regs;
@@ -249,7 +250,7 @@ void test_cpu_jump001(void)
 	initialize_registers(&regs);
 
 	// Set A register to 10
-	instruction_bits = 15;
+	instruction_bits = value;
 	cpu(instruction_bits, 0, &ram, &regs);
 	TEST_ASSERT_EQUAL_INT(1, get_register_PC(&regs));
 
@@ -262,6 +263,11 @@ void test_cpu_jump001(void)
 	instruction_bits = set_instruction_bits(0b1, 0b0, 0b101010, 0b000, 0b001);
 	cpu(instruction_bits, 0, &ram, &regs);
 	TEST_ASSERT_EQUAL_INT(3, get_register_PC(&regs));
+
+	// Output of ALU is +1, thus yes jump
+	instruction_bits = set_instruction_bits(0b1, 0b0, 0b111111, 0b000, 0b001);
+	cpu(instruction_bits, 0, &ram, &regs);
+	TEST_ASSERT_EQUAL_INT(value, get_register_PC(&regs));
 
 	destroy_memory(&ram);
 	destroy_registers(&regs);
