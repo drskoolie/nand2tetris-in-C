@@ -35,9 +35,9 @@ void test_cpu_mnem0_dest000(void)
 
 	cpu(instruction_bits, 0, &ram, &regs);
 
-	TEST_ASSERT_EQUAL_INT(0, get_memory(&ram, 0));
-	TEST_ASSERT_EQUAL_INT(0, get_register_D(&regs));
 	TEST_ASSERT_EQUAL_INT(0, get_register_A(&regs));
+	TEST_ASSERT_EQUAL_INT(0, get_register_D(&regs));
+	TEST_ASSERT_EQUAL_INT(0, get_memory(&ram, 0));
 
 	destroy_memory(&ram);
 	destroy_registers(&regs);
@@ -56,9 +56,9 @@ void test_cpu_mnem0_dest001(void)
 
 	cpu(instruction_bits, 0, &ram, &regs);
 
-	TEST_ASSERT_EQUAL_INT(1, get_memory(&ram, 0));
-	TEST_ASSERT_EQUAL_INT(0, get_register_D(&regs));
 	TEST_ASSERT_EQUAL_INT(0, get_register_A(&regs));
+	TEST_ASSERT_EQUAL_INT(0, get_register_D(&regs));
+	TEST_ASSERT_EQUAL_INT(1, get_memory(&ram, 0));
 
 
 	destroy_memory(&ram);
@@ -78,9 +78,9 @@ void test_cpu_mnem0_dest010(void)
 
 	cpu(instruction_bits, 0, &ram, &regs);
 
-	TEST_ASSERT_EQUAL_INT(0, get_memory(&ram, 0));
-	TEST_ASSERT_EQUAL_INT(1, get_register_D(&regs));
 	TEST_ASSERT_EQUAL_INT(0, get_register_A(&regs));
+	TEST_ASSERT_EQUAL_INT(1, get_register_D(&regs));
+	TEST_ASSERT_EQUAL_INT(0, get_memory(&ram, 0));
 
 	destroy_memory(&ram);
 	destroy_registers(&regs);
@@ -99,9 +99,9 @@ void test_cpu_mnem0_dest011(void)
 
 	cpu(instruction_bits, 0, &ram, &regs);
 
-	TEST_ASSERT_EQUAL_INT(1, get_memory(&ram, 0));
-	TEST_ASSERT_EQUAL_INT(1, get_register_D(&regs));
 	TEST_ASSERT_EQUAL_INT(0, get_register_A(&regs));
+	TEST_ASSERT_EQUAL_INT(1, get_register_D(&regs));
+	TEST_ASSERT_EQUAL_INT(1, get_memory(&ram, 0));
 
 	destroy_memory(&ram);
 	destroy_registers(&regs);
@@ -120,9 +120,9 @@ void test_cpu_mnem0_dest100(void)
 
 	cpu(instruction_bits, 0, &ram, &regs);
 
-	TEST_ASSERT_EQUAL_INT(0, get_memory(&ram, 0));
-	TEST_ASSERT_EQUAL_INT(0, get_register_D(&regs));
 	TEST_ASSERT_EQUAL_INT(1, get_register_A(&regs));
+	TEST_ASSERT_EQUAL_INT(0, get_register_D(&regs));
+	TEST_ASSERT_EQUAL_INT(0, get_memory(&ram, 0));
 
 	destroy_memory(&ram);
 	destroy_registers(&regs);
@@ -141,9 +141,9 @@ void test_cpu_mnem0_dest101(void)
 
 	cpu(instruction_bits, 0, &ram, &regs);
 
-	TEST_ASSERT_EQUAL_INT(1, get_memory(&ram, 0));
-	TEST_ASSERT_EQUAL_INT(0, get_register_D(&regs));
 	TEST_ASSERT_EQUAL_INT(1, get_register_A(&regs));
+	TEST_ASSERT_EQUAL_INT(0, get_register_D(&regs));
+	TEST_ASSERT_EQUAL_INT(1, get_memory(&ram, 0));
 
 	destroy_memory(&ram);
 	destroy_registers(&regs);
@@ -162,9 +162,9 @@ void test_cpu_mnem0_dest110(void)
 
 	cpu(instruction_bits, 0, &ram, &regs);
 
-	TEST_ASSERT_EQUAL_INT(1, get_memory(&ram, 0));
+	TEST_ASSERT_EQUAL_INT(1, get_register_A(&regs));
 	TEST_ASSERT_EQUAL_INT(1, get_register_D(&regs));
-	TEST_ASSERT_EQUAL_INT(0, get_register_A(&regs));
+	TEST_ASSERT_EQUAL_INT(0, get_memory(&ram, 0));
 
 	destroy_memory(&ram);
 	destroy_registers(&regs);
