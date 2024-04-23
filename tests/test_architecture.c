@@ -254,12 +254,12 @@ void test_cpu_jump001(void)
 	TEST_ASSERT_EQUAL_INT(1, get_register_PC(&regs));
 
 	// Output of ALU is -1, thus no jump
-	instruction_bits = set_instruction_bits(0b1, 0b0, 0b111010, 0b100, 0b001);
+	instruction_bits = set_instruction_bits(0b1, 0b0, 0b111010, 0b000, 0b001);
 	cpu(instruction_bits, 0, &ram, &regs);
 	TEST_ASSERT_EQUAL_INT(2, get_register_PC(&regs));
 
 	// Output of ALU is +0, thus no jump
-	instruction_bits = set_instruction_bits(0b1, 0b0, 0b101010, 0b100, 0b001);
+	instruction_bits = set_instruction_bits(0b1, 0b0, 0b101010, 0b000, 0b001);
 	cpu(instruction_bits, 0, &ram, &regs);
 	TEST_ASSERT_EQUAL_INT(3, get_register_PC(&regs));
 

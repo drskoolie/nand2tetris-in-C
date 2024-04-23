@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "architecture.h"
 #include "arithmetic.h"
 #include "binary.h"
@@ -39,6 +40,10 @@ void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *re
 	int16_t zr_alu;
 	int16_t ng_alu;
 
+	int16_t positive_flag;
+	int16_t negative_flag;
+	int16_t zero_flag;
+
 	type_of_instruction = (instruction_bits >> 15) & 0b1;
 	mnem_instruction = (instruction_bits & 0b0001000000000000) >> 12;
 	comp_instruction = (instruction_bits & 0b0000111111000000) >> 6;
@@ -78,17 +83,20 @@ void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *re
 		}
 
 		inc_register_PC(regs);
-		print_binary(get_register_PC(regs));
 
-		if (jump_instruction & 0b001 && (ng_alu & 0b1) != 0b1) {
+		negative_flag = ng_alu & 0b1;
+		zero_flag = zr_alu & 0b1;
+		positive_flag = ((~negative_flag & 0b1) & (~zero_flag & 0b1)) & 0b1;
+
+		if ((jump_instruction & 0b001) && positive_flag ) {
 			set_register_PC(regs, get_register_A(regs));
 		}
 
-		if (jump_instruction & 0b010 && (zr_alu & 0b1) == 0b0) {
+		if ((jump_instruction & 0b010) && zero_flag) {
 			set_register_PC(regs, get_register_A(regs));
 		}
 
-		if (jump_instruction & 0b100 && (ng_alu & 0b1) == 0b1) {
+		if (jump_instruction & 0b100 && negative_flag) {
 			set_register_PC(regs, get_register_A(regs));
 		}
 	}
