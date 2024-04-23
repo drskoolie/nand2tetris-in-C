@@ -13,6 +13,9 @@ void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *re
 
 	int16_t x_alu;
 	int16_t y_alu;
+	int16_t out_alu;
+	int16_t zr_alu;
+	int16_t ng_alu;
 
 	type_of_instruction = instruction_bits >> 15;
 	mnem_instruction = (instruction_bits & 0b0001000000000000) >> 12;
@@ -29,10 +32,11 @@ void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *re
 		x_alu = get_register_D(regs);
 		if (mnem_instruction == 1) {
 			y_alu = get_register_M(regs, ram);
-
 		}
 		else if (mnem_instruction == 0){
 			y_alu = get_register_A(regs);
 		}
+
+		alu(x_alu, y_alu, comp_instruction, &out_alu, &zr_alu, &ng_alu);
 	}
 }
