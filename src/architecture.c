@@ -2,6 +2,27 @@
 #include "arithmetic.h"
 #include "memory.h"
 
+// TODO
+// Test later
+int16_t set_instruction_bits(
+		uint16_t type_of_instruction,
+		uint16_t mnem,
+		uint16_t comp,
+		uint16_t dest,
+		uint16_t jump
+)
+{
+	int16_t instruction_bits = 0;
+
+	instruction_bits |= (type_of_instruction << 15);
+	instruction_bits |= (mnem << 12);
+	instruction_bits |= (comp << 6);
+	instruction_bits |= (dest << 3);
+	instruction_bits |= jump;
+
+	return instruction_bits;
+}
+
 void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *regs)
 {
 	// Instruction Capturing
