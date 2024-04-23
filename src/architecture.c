@@ -29,7 +29,10 @@ void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *re
 	}
 
 	else if (type_of_instruction == 1) {
+		// Setting first input to ALU
 		x_alu = get_register_D(regs);
+
+		// Setting second input to ALU
 		if (mnem_instruction == 1) {
 			y_alu = get_register_M(regs, ram);
 		}
@@ -38,5 +41,10 @@ void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *re
 		}
 
 		alu(x_alu, y_alu, comp_instruction, &out_alu, &zr_alu, &ng_alu);
+
+		// Destination
+		if (dest_instruction & 0b001) {
+			set_register_M(regs, ram, out_alu);
+		}
 	}
 }
