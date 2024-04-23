@@ -28,7 +28,7 @@ void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *re
 	else if (type_of_instruction == 1) {
 		x_alu = get_register_D(regs);
 		if (mnem_instruction == 1) {
-			y_alu = get_register_M(regs);
+			y_alu = get_register_M(regs, ram);
 
 		}
 		else if (mnem_instruction == 0){
