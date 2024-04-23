@@ -50,7 +50,6 @@ void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *re
 	if (type_of_instruction == 0) {
 		set_register_A(regs, instruction_bits);
 	}
-
 	else if (type_of_instruction == 1) {
 		// Setting first input to ALU
 		x_alu = get_register_D(regs);
@@ -78,4 +77,5 @@ void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *re
 			set_register_A(regs, out_alu);
 		}
 	}
+
 }

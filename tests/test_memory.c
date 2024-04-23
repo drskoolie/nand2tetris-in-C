@@ -5,7 +5,7 @@ void setUp(void) {}
 
 void tearDown(void) {}
 
-void test_initialize_memory()
+void test_initialize_memory(void)
 {
 	memory_t reg;
 
@@ -16,7 +16,7 @@ void test_initialize_memory()
 	destroy_memory(&reg);
 }
 
-void test_set_memory()
+void test_set_memory(void)
 {
 	memory_t reg;
 
@@ -28,7 +28,7 @@ void test_set_memory()
 	destroy_memory(&reg);
 }
 
-void test_destroy_memory()
+void test_destroy_memory(void)
 {
 	memory_t reg;
 
@@ -40,7 +40,7 @@ void test_destroy_memory()
 
 }
 
-void test_initialize_registers()
+void test_initialize_registers(void)
 {
 	registers_t regs;
 
@@ -53,7 +53,7 @@ void test_initialize_registers()
 	destroy_registers(&regs);
 }
 
-void test_set_register_A()
+void test_set_register_A(void)
 {
 	registers_t regs;
 
@@ -64,7 +64,7 @@ void test_set_register_A()
 	destroy_registers(&regs);
 }
 
-void test_set_register_D()
+void test_set_register_D(void)
 {
 	registers_t regs;
 
@@ -75,7 +75,7 @@ void test_set_register_D()
 	destroy_registers(&regs);
 }
 
-void test_set_register_PC()
+void test_set_register_PC(void)
 {
 	registers_t regs;
 
@@ -86,7 +86,7 @@ void test_set_register_PC()
 	destroy_registers(&regs);
 }
 
-void test_get_register_M()
+void test_get_register_M(void)
 {
 	memory_t ram;
 	registers_t regs;
@@ -105,7 +105,7 @@ void test_get_register_M()
 	destroy_memory(&ram);
 }
 
-void test_set_register_M()
+void test_set_register_M(void)
 {
 	memory_t ram;
 	registers_t regs;
@@ -124,6 +124,18 @@ void test_set_register_M()
 	destroy_memory(&ram);
 }
 
+void test_inc_register_PC(void)
+{
+	registers_t regs;
+
+	initialize_registers(&regs);
+
+	TEST_ASSERT_EQUAL_INT(0, get_register_PC(&regs));
+
+	destroy_registers(&regs);
+
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
@@ -137,6 +149,7 @@ int main(void)
 	RUN_TEST(test_set_register_PC);
 	RUN_TEST(test_get_register_M);
 	RUN_TEST(test_set_register_M);
+	RUN_TEST(test_inc_register_PC);
 
 	return UNITY_END();
 }
