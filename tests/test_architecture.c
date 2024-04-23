@@ -220,8 +220,9 @@ void test_cpu_mnem1_dest111(void)
 
 void test_cpu_jump000(void)
 {
+	// No jumping should occur here
+	int16_t value = 27;
 	int16_t instruction_bits;
-	instruction_bits = set_instruction_bits(0b1, 0b0, 0b111111, 0b100, 0b000);
 
 	memory_t ram;
 	registers_t regs;
@@ -229,10 +230,26 @@ void test_cpu_jump000(void)
 	initialize_memory(&ram, 256);
 	initialize_registers(&regs);
 
+	// Set A register to value
+	instruction_bits = value;
 	cpu(instruction_bits, 0, &ram, &regs);
-	cpu(instruction_bits, 0, &ram, &regs);
+	TEST_ASSERT_EQUAL_INT(1, get_register_PC(&regs));
 
+	// Output of ALU is -1, thus no jump
+	instruction_bits = set_instruction_bits(0b1, 0b0, 0b111010, 0b000, 0b000);
+	cpu(instruction_bits, 0, &ram, &regs);
 	TEST_ASSERT_EQUAL_INT(2, get_register_PC(&regs));
+
+	// Output of ALU is +0, thus no jump
+	instruction_bits = set_instruction_bits(0b1, 0b0, 0b101010, 0b000, 0b000);
+	cpu(instruction_bits, 0, &ram, &regs);
+	TEST_ASSERT_EQUAL_INT(3, get_register_PC(&regs));
+
+	// Output of ALU is +1, thus no jump
+	instruction_bits = set_instruction_bits(0b1, 0b0, 0b111111, 0b000, 0b000);
+	cpu(instruction_bits, 0, &ram, &regs);
+	TEST_ASSERT_EQUAL_INT(4, get_register_PC(&regs));
+
 
 	destroy_memory(&ram);
 	destroy_registers(&regs);
