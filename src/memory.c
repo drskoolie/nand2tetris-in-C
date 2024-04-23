@@ -85,6 +85,14 @@ int16_t get_register_D(registers_t *regs)
 	return get_memory(&regs->D, 0);
 }
 
+int16_t get_register_M(registers_t *regs)
+{
+	int16_t address;
+	address = get_memory(&regs->A, 0);
+
+	return address;
+}
+
 int16_t get_register_PC(registers_t *regs)
 {
 	return get_memory(&regs->PC, 0);

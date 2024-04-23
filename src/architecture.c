@@ -25,15 +25,14 @@ void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *re
 		set_register_A(regs, instruction_bits);
 	}
 
-	/*
-	//Compute Instruction
 	else if (type_of_instruction == 1) {
+		x_alu = get_register_D(regs);
 		if (mnem_instruction == 1) {
-			x_alu = get_ram(reg_a);
+			y_alu = get_register_M(regs);
+
 		}
 		else if (mnem_instruction == 0){
-			x_alu = get_ram(reg_a);
+			y_alu = get_register_A(regs);
 		}
 	}
-	*/
 }

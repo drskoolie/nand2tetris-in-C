@@ -86,6 +86,23 @@ void test_set_register_PC()
 	destroy_registers(&regs);
 }
 
+void test_get_register_M()
+{
+	memory_t ram;
+	registers_t regs;
+
+	int16_t value = 10;
+	
+	initialize_registers(&regs);
+	initialize_memory(&ram, 128);
+
+	set_memory(&ram, value, 500);
+	TEST_ASSERT_EQUAL_INT(value, get_register_M(&regs));
+
+	destroy_registers(&regs);
+	destroy_memory(&ram);
+
+}
 
 int main(void)
 {
@@ -98,6 +115,7 @@ int main(void)
 	RUN_TEST(test_set_register_A);
 	RUN_TEST(test_set_register_D);
 	RUN_TEST(test_set_register_PC);
+	RUN_TEST(test_get_register_M);
 
 	return UNITY_END();
 }
