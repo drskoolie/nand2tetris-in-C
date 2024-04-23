@@ -60,6 +60,8 @@ int16_t incrementer(int16_t a)
 
 void alu(int16_t x, int16_t y, int16_t instruction_bits, int16_t *out, int16_t *zr, int16_t *ng)
 {
+	// zr == Zero Flag
+	// ng == Negative Flag
 	int16_t zx = repeat_lsb((instruction_bits >> 5) & 0b1);
 	int16_t nx = repeat_lsb((instruction_bits >> 4) & 0b1);
 	int16_t zy = repeat_lsb((instruction_bits >> 3) & 0b1);

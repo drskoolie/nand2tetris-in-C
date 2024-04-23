@@ -108,4 +108,3 @@ void inc_register_PC(registers_t *regs)
 {
 	set_memory(&regs->PC, 0, get_register_PC(regs) + 1);
 }
-
