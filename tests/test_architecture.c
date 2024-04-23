@@ -5,7 +5,7 @@ void setUp(void) {}
 
 void tearDown(void) {}
 
-void test_address_instruction(void)
+void test_cpu_address_instruction(void)
 {
 	memory_t ram;
 	registers_t regs;
@@ -21,11 +21,26 @@ void test_address_instruction(void)
 	destroy_registers(&regs);
 }
 
+void test_cpu_mnem0_dest001(void)
+{
+	memory_t ram;
+	registers_t regs;
+
+	initialize_memory(&ram, 128);
+	initialize_registers(&regs);
+
+	TEST_ASSERT_EQUAL_INT(0, 1);
+
+	destroy_memory(&ram);
+	destroy_registers(&regs);
+}
+
 int main(void)
 {
 	UNITY_BEGIN();
 
-	RUN_TEST(test_address_instruction);
+	RUN_TEST(test_cpu_address_instruction);
+	RUN_TEST(test_cpu_mnem0_dest001);
 
 	return UNITY_END();
 }

@@ -46,5 +46,13 @@ void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *re
 		if (dest_instruction & 0b001) {
 			set_register_M(regs, ram, out_alu);
 		}
+
+		if (dest_instruction & 0b010) {
+			set_register_D(regs, out_alu);
+		}
+
+		if (dest_instruction & 0b100) {
+			set_register_A(regs, out_alu);
+		}
 	}
 }
