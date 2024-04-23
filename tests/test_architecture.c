@@ -507,6 +507,31 @@ void test_cpu_jump111(void)
 	destroy_registers(&regs);
 }
 
+void test_cpu_reset(void)
+{
+	int16_t instruction_bits;
+
+	memory_t ram;
+	registers_t regs;
+
+	initialize_memory(&ram, 256);
+	initialize_registers(&regs);
+
+	// Output 1 to nowhere (NOP)
+	instruction_bits = set_instruction_bits(0b1, 0b0, 0b111111, 0b000, 0b000);
+	cpu(instruction_bits, 0, &ram, &regs);
+	TEST_ASSERT_EQUAL_INT(1, get_register_PC(&regs));
+
+	// Reset the PC
+	instruction_bits = set_instruction_bits(0b1, 0b0, 0b111111, 0b000, 0b000);
+	cpu(instruction_bits, 1, &ram, &regs);
+	TEST_ASSERT_EQUAL_INT(0, get_register_PC(&regs));
+
+
+	destroy_memory(&ram);
+	destroy_registers(&regs);
+}
+
 
 
 int main(void)
@@ -533,6 +558,8 @@ int main(void)
 	RUN_TEST(test_cpu_jump101);
 	RUN_TEST(test_cpu_jump110);
 	RUN_TEST(test_cpu_jump111);
+
+	RUN_TEST(test_cpu_reset);
 
 	return UNITY_END();
 }

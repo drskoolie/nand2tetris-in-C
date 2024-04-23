@@ -55,6 +55,7 @@ void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *re
 		set_register_A(regs, instruction_bits);
 		inc_register_PC(regs);
 	}
+	// Computing instruction
 	else if (type_of_instruction == 1) {
 		// Setting first input to ALU
 		x_alu = get_register_D(regs);
@@ -99,6 +100,11 @@ void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *re
 		if (jump_instruction & 0b100 && negative_flag) {
 			set_register_PC(regs, get_register_A(regs));
 		}
+	}
+
+	// Reset Program Counter
+	if (reset & 0x0001) {
+		set_register_PC(regs, 0x0000);
 	}
 
 }
