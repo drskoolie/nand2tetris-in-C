@@ -1,5 +1,6 @@
 #include "architecture.h"
 #include "arithmetic.h"
+#include "binary.h"
 #include "memory.h"
 
 // TODO
@@ -47,6 +48,7 @@ void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *re
 	//Address Instruction (sets A register)
 	if (type_of_instruction == 0) {
 		set_register_A(regs, instruction_bits);
+		inc_register_PC(regs);
 	}
 	else if (type_of_instruction == 1) {
 		// Setting first input to ALU
@@ -74,20 +76,21 @@ void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *re
 		if (dest_instruction & 0b100) {
 			set_register_A(regs, out_alu);
 		}
-	}
 
-	inc_register_PC(regs);
+		inc_register_PC(regs);
+		print_binary(get_register_PC(regs));
 
-	if (jump_instruction & 0b001 && (ng_alu & 0b1) != 0b1) {
-		set_register_PC(regs, get_register_A(regs));
-	}
+		if (jump_instruction & 0b001 && (ng_alu & 0b1) != 0b1) {
+			set_register_PC(regs, get_register_A(regs));
+		}
 
-	if (jump_instruction & 0b010 && (zr_alu & 0b1) == 0b0) {
-		set_register_PC(regs, get_register_A(regs));
-	}
+		if (jump_instruction & 0b010 && (zr_alu & 0b1) == 0b0) {
+			set_register_PC(regs, get_register_A(regs));
+		}
 
-	if (jump_instruction & 0b100 && (ng_alu & 0b1) == 0b1) {
-		set_register_PC(regs, get_register_A(regs));
+		if (jump_instruction & 0b100 && (ng_alu & 0b1) == 0b1) {
+			set_register_PC(regs, get_register_A(regs));
+		}
 	}
 
 }
