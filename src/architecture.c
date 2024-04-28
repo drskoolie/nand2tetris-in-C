@@ -13,6 +13,7 @@ int16_t set_instruction_bits(
 		uint16_t dest,
 		uint16_t jump
 )
+
 {
 	int16_t instruction_bits = 0;
 
@@ -105,6 +106,7 @@ void cpu(int16_t instruction_bits, int16_t reset, memory_t *ram, registers_t *re
 	// Reset Program Counter
 	if (reset & 0x0001) {
 		set_register_PC(regs, 0x0000);
-	}
 
+	}
 }
+
